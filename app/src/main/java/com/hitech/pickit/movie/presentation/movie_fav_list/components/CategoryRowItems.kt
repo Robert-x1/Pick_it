@@ -22,12 +22,13 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.hitech.pickit.core.presentation.utils.getCategoryFromId
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
 fun CategoryItems(
     modifier: Modifier = Modifier,
-    categoryList: List<String> = emptyList<String>(),
+    categoryList: List<Int> = emptyList<Int>(),
 ) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
@@ -35,28 +36,30 @@ fun CategoryItems(
 
     LazyRow(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp),
+            .fillMaxWidth().padding(horizontal = 6.dp),
         horizontalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         items(categoryList) { categoryItem ->
             Card(
 
-                modifier = Modifier
-                    .height(screenHeight * 0.045f)
-                    .width(screenWidth * 0.25f)
-                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.1f)),
                 shape = RoundedCornerShape(100f),
-                elevation = CardDefaults.cardElevation(6.dp),
+                elevation = CardDefaults.cardElevation(5.dp),
+                modifier = Modifier.fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.1f))
+                    .height(screenHeight * 0.045f)
             ) {
                 Box(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize().padding(horizontal = 4.dp),
                     contentAlignment = Alignment.Center
                 ) {
+
                     Text(
-                        categoryItem,
-                        textAlign = TextAlign.Center
+
+                        getCategoryFromId(categoryItem) ,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(horizontal = 12.dp)
                     )
+
                 }
             }
         }

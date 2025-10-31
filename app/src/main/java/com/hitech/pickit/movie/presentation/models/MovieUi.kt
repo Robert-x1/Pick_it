@@ -1,19 +1,17 @@
 package com.hitech.pickit.movie.presentation.models
 
 import android.icu.text.NumberFormat
-import androidx.annotation.DrawableRes
 import com.hitech.pickit.movie.domain.Movie
 import java.util.Locale
 
 data class MovieUi(
     val id: String,
     val name: String,
-    @DrawableRes
-    val picture: Int,
-    val rank: Int,
+    val picture: String?,
     val rate: DisplayableNumber,
-    val ticketPrice: DisplayableNumber,
-    val category: List<String>
+    val category: List<Int>,
+    val overview: String,
+    val releaseDate: String?,
 
 )
 
@@ -22,21 +20,22 @@ data class DisplayableNumber(
     val formatted: String
 
 )
-fun Movie.toMovieUi() : MovieUi{
+
+fun Movie.toMovieUi(): MovieUi {
     return MovieUi(
         id = id,
         name = name,
         picture = picture,
-        rank = rank,
         rate = rate.toDisplayableNumber(),
-        ticketPrice = ticketPrice.toDisplayableNumber(),
-        category = category
+        category = category,
+        overview = overview,
+        releaseDate = releaseDate,
     )
 
 
 }
 
-fun Double.toDisplayableNumber(): DisplayableNumber{
+fun Double.toDisplayableNumber(): DisplayableNumber {
     val formatted = NumberFormat.getNumberInstance(Locale.getDefault()).apply {
         maximumFractionDigits = 1
         minimumFractionDigits = 1
