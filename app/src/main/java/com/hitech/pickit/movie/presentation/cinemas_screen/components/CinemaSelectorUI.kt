@@ -7,10 +7,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.material3.Card
@@ -33,7 +31,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.ui.theme.PickItTheme
-import okhttp3.internal.wait
 
 @Composable
 fun CinemaSelectorUI(
@@ -123,7 +120,7 @@ fun CinemaSelectorUI(
         Row(
             modifier = Modifier,
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement =  Arrangement.spacedBy(10.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
 
             DropdownCard(
@@ -137,7 +134,7 @@ fun CinemaSelectorUI(
                     selectedCinema = it
                     expandedCinema = false
                 },
-                backgroundColor= backgroundColor,
+                backgroundColor = backgroundColor,
                 modifier = Modifier.fillMaxWidth(0.5f)
             )
 
@@ -153,7 +150,7 @@ fun CinemaSelectorUI(
                     selectedLocation = it
                     expandedLocation = false
                 },
-                backgroundColor= backgroundColor,
+                backgroundColor = backgroundColor,
                 modifier = Modifier.fillMaxWidth(1f)
             )
         }
@@ -176,7 +173,7 @@ private fun DropdownCard(
         modifier = modifier,
         shape = RoundedCornerShape(20),
         colors = CardDefaults.cardColors(
-            containerColor =backgroundColor ,
+            containerColor = backgroundColor,
             contentColor = MaterialTheme.colorScheme.onTertiary
         ),
         elevation = CardDefaults.cardElevation(8.dp),

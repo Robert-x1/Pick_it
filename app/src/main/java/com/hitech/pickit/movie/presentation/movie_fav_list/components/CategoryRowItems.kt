@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -36,7 +35,8 @@ fun CategoryItems(
 
     LazyRow(
         modifier = modifier
-            .fillMaxWidth().padding(horizontal = 6.dp),
+            .fillMaxWidth()
+            .padding(horizontal = 6.dp),
         horizontalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         items(categoryList) { categoryItem ->
@@ -44,18 +44,21 @@ fun CategoryItems(
 
                 shape = RoundedCornerShape(100f),
                 elevation = CardDefaults.cardElevation(5.dp),
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .background(MaterialTheme.colorScheme.surface.copy(alpha = 0.1f))
                     .height(screenHeight * 0.045f)
             ) {
                 Box(
-                    modifier = Modifier.fillMaxSize().padding(horizontal = 4.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = 4.dp),
                     contentAlignment = Alignment.Center
                 ) {
 
                     Text(
 
-                        getCategoryFromId(categoryItem) ,
+                        getCategoryFromId(categoryItem),
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = 12.dp)
                     )

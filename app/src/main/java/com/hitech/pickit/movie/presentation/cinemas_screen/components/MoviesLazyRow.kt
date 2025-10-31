@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
 import com.hitech.pickit.R
 import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
 import com.hitech.pickit.movie.utili.MovieState
@@ -40,16 +39,18 @@ fun MoviesLazyRow(
         }
     } else {
 
-        LazyRow(modifier = modifier
-            .fillMaxWidth()
-            .height(400.dp)
+        LazyRow(
+            modifier = modifier
+                .fillMaxWidth()
+                .height(400.dp)
         ) {
             items(state.movies) { movie ->
 
-                Box(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 50.dp, end = 50.dp)
-                    .padding(start = 20.dp)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 50.dp, end = 50.dp)
+                        .padding(start = 20.dp)
                 ) {
                     PostBorder {
                         Image(
@@ -57,7 +58,9 @@ fun MoviesLazyRow(
                             // model = movie.picture,
                             painter = painterResource(R.drawable.the_dark_knight_poster),
                             contentDescription = "",
-                            modifier = modifier.width(250.dp).height(375.dp)
+                            modifier = modifier
+                                .width(250.dp)
+                                .height(375.dp)
                         )
                     }
                 }
