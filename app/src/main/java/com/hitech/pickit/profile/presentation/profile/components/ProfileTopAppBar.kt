@@ -7,7 +7,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.hitech.pickit.ui.theme.PickItTheme
@@ -25,12 +24,12 @@ fun ProfileTopAppBar(modifier: Modifier = Modifier) {
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            Color.Transparent
+            MaterialTheme.colorScheme.primary
         )
     )
 }
 
-@Preview()
+@Preview(showBackground = true)
 @Composable
 private fun ProfileTopAppbarPreview() {
     PickItTheme {
