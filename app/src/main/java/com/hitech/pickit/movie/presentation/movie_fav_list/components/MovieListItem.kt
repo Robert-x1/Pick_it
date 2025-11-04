@@ -32,6 +32,7 @@ import com.hitech.pickit.R
 import com.hitech.pickit.movie.domain.Movie
 import com.hitech.pickit.movie.presentation.models.MovieUi
 import com.hitech.pickit.movie.presentation.models.toMovieUi
+import com.hitech.pickit.movie.utili.StarsRate
 import com.hitech.pickit.ui.theme.PickItTheme
 
 
@@ -86,7 +87,7 @@ fun MovieListItem(
 
             Row(
                 modifier = Modifier
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = 5.dp)
                     .padding(top = 10.dp)
             ) {
                 CategoryItems(
@@ -109,7 +110,7 @@ fun MovieListItem(
 
 
             Text(
-                "${movieUi.ticketPrice.formatted} $",
+                "25.4 $",
                 fontSize = 50.sp,
                 style = MaterialTheme.typography.labelLarge
             )
@@ -155,9 +156,9 @@ private fun MovieItemPreview() {
 internal val MoviePreview = Movie(
     id = "1",
     name = "Joker",
-    picture = R.drawable.joker,
-    rank = 10,
     rate = 4.5,
-    ticketPrice = 25.4,
-    category = listOf("Action", "Drama", "History", "Funny", "Crazy", "Robert")
+    category = listOf(35, 16, 28, 27, 878, 10770),
+    picture = "TODO()",
+    overview = "null",
+    releaseDate = "TODO()",
 ).toMovieUi()

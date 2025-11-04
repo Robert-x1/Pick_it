@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
 import com.hitech.pickit.movie.presentation.movie_fav_list.components.MovieListItem
 import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
+import com.hitech.pickit.movie.utili.MovieState
 import com.hitech.pickit.ui.theme.PickItTheme
 
 
