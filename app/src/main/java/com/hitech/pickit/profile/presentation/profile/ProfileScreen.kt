@@ -1,108 +1,93 @@
 package com.hitech.pickit.profile.presentation.profile
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
-import com.hitech.pickit.profile.presentation.profile.components.ListProfileMenuItem
-import com.hitech.pickit.profile.presentation.profile.components.SettingProfileMenuItem
+import com.hitech.pickit.profile.presentation.profile.components.LanguageProfileMenuItem
+import com.hitech.pickit.profile.presentation.profile.components.ProfileHeader
+import com.hitech.pickit.profile.presentation.profile.components.ProfileScreenGradient
 import com.hitech.pickit.profile.presentation.profile.components.ProfileTopAppBar
+import com.hitech.pickit.profile.presentation.profile.components.ThemeMenuItem
+import com.hitech.pickit.profile.presentation.profile.components.ToggleMenuItem
+import com.hitech.pickit.profile.util.AppTheme
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
-fun ProfileScreen(
-    modifier: Modifier = Modifier
-) {
-    Scaffold(
-        topBar = {
-            ProfileTopAppBar()
-        },
-        content = {innerPadding ->
-            Column(
-                modifier = modifier
-                    .padding(innerPadding)
-                    .padding(16.dp)
-                    .fillMaxSize()
-            ) {
-                Text(
-                    text="Settings",
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.titleLarge
-                )
+fun NewProfileScreen(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+    ) {
+        ProfileScreenGradient()
 
-                SettingProfileMenuItem(
-                    icon = R.drawable.theme_icon,
-                    text = "Theme",
-                    menuContent = {onDismiss ->
-                        DropdownMenuItem(
-                            text = { Text("System default") },
-                            onClick = {
-                                onDismiss()
-                            }
-                        )
-                        DropdownMenuItem(
-                            text = { Text("Light") },
-                            onClick = {
-                                onDismiss()
-                            }
-                        )
-                        DropdownMenuItem(
-                            text = { Text("Dark") },
-                            onClick = {
-                                onDismiss()
-                            }
-                        )
-                    }
-                )
+        Scaffold(
+            containerColor = Color.Transparent,
+            topBar = {
+                ProfileTopAppBar()
+            },
+            content = {
+                Column(
+                    modifier = Modifier
+                        .padding(it)
+                        .fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    ProfileHeader(
+                        avatarResId = R.drawable.joker,
+                        name = "Sherif",
+                        email = "Sherif@gmail.com",
+                    )
 
-                SettingProfileMenuItem(
-                    icon = R.drawable.language_icon,
-                    text = "Language",
-                    menuContent = {onDismiss ->
-                        DropdownMenuItem(
-                            text = { Text("العربية") },
-                            onClick = {
-                                onDismiss()
-                            }
-                        )
-                        DropdownMenuItem(
-                            text = { Text("English") },
-                            onClick = {
-                                onDismiss()
-                            }
-                        )
-                    }
-                )
+                    Spacer(modifier = Modifier.padding(10.dp))
 
-                Text(
-                    text="Lists",
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.titleLarge
-                )
+                    ToggleMenuItem(
+                        icon = R.drawable.notifications_icon,
+                        text = "Notification",
+                        isChecked = true,
+                        onCheckedChange = {}
+                    )
 
-                ListProfileMenuItem(
-                    icon = R.drawable.favorite_icon,
-                    text = "Favourites"
-                )
+                    LanguageProfileMenuItem(
+                        icon = R.drawable.language_icon,
+                        text = "Language",
+                        selectedLanguage = "English (US)"
+                    )
+
+                    ThemeMenuItem(
+                        currentTheme = AppTheme.DARK,
+                        onThemeChange = {},
+                    )
+
+                    HorizontalDivider(
+                        modifier = Modifier
+                            .padding(horizontal = 24.dp, vertical = 5.dp),
+                    )
+
+                    LanguageProfileMenuItem(
+                        icon = R.drawable.favorite_icon,
+                        text = "Favourites"
+                    )
+                }
             }
-
-        }
-    )
+        )
+    }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview
 @Composable
-private fun ProfileScreenPreview() {
+private fun NewProfileScreenPreview() {
     PickItTheme {
-            ProfileScreen()
+        NewProfileScreen()
     }
 }
