@@ -21,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.hitech.pickit.movie.presentation.movieScreen.MovieListRoute
 import com.hitech.pickit.ui.theme.PickItTheme
-import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
