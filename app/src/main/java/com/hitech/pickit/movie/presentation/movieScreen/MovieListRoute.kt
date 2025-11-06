@@ -1,11 +1,11 @@
-package com.hitech.pickit.movie.presentation.movieScreen.components
+package com.hitech.pickit.movie.presentation.movieScreen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
-import com.hitech.pickit.movie.presentation.movieScreen.MovieListScreen
+import com.hitech.pickit.movie.presentation.movieScreen.components.MovieListScreen
 import com.hitech.pickit.movie.presentation.movie_fav_list.DiscoverMoviesViewModel
 
 @Composable

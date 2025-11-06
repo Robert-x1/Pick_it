@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.movieScreen
+package com.hitech.pickit.movie.presentation.movieScreen.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.movie.presentation.models.toMovieUi
-import com.hitech.pickit.movie.presentation.movieScreen.components.MovieItem
 import com.hitech.pickit.movie.presentation.movie_fav_list.DiscoverMoviesViewModel
 
 
