@@ -34,6 +34,7 @@ fun MovieListScreen(
     state: MovieState,
     modifier: Modifier = Modifier
 ) {
+
     val configuration = LocalConfiguration.current
     val screenHeight = configuration.screenHeightDp.dp
     val screenWidth = configuration.screenWidthDp.dp
@@ -118,3 +119,6 @@ private fun MovieFavListScreenPreview() {
     }
 
 }
+
+
+

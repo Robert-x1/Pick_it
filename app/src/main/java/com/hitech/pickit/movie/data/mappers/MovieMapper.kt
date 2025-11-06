@@ -9,9 +9,9 @@ fun MovieDto.toMovie(): Movie{
         id = id.toString(),
         name = title,
         overview = overview,
-        picture =poster_path?.let {posterPath -> "https://image.tmdb.org/t/p/w500$posterPath" },
-        rate = vote_average,
-        category = genre_ids,
-        releaseDate = release_date
+        picture =posterPath?.let {posterPath -> "https://image.tmdb.org/t/p/w500$posterPath" },
+        rate = voteAverage,
+        category = genreIds,
+        releaseDate = releaseDate
     )
 }
