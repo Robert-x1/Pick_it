@@ -73,7 +73,10 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation("androidx.compose.ui:ui-tooling")
+    implementation("androidx.compose.material3:material3:1.5.0-alpha08")
 
+    //Icon
+    implementation("androidx.compose.material:material-icons-extended:1.7.7")
     //Coil
     implementation("io.coil-kt:coil-compose:2.7.0")
 

@@ -1,5 +1,8 @@
-package com.robert.pickit.movie.presentation.movie_list
+@file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
+package com.hitech.pickit.movie.presentation.movie_fav_list
+
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -10,7 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,6 +33,7 @@ import com.hitech.pickit.movie.utili.MovieState
 import com.hitech.pickit.ui.theme.PickItTheme
 
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun MovieListScreen(
     state: MovieState,
@@ -46,7 +51,7 @@ fun MovieListScreen(
             contentAlignment = Alignment.Center
         ) {
             //shimmer
-            CircularProgressIndicator()
+            LoadingIndicator()
         }
 
     } else {

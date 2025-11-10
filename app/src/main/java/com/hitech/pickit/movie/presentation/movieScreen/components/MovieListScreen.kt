@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
+
 package com.hitech.pickit.movie.presentation.movieScreen.components
 
 import androidx.compose.foundation.layout.Box
@@ -8,6 +10,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -77,7 +81,7 @@ fun MovieListScreen(
                                 .padding(16.dp),
                             contentAlignment = Alignment.Center
                         ) {
-                            CircularProgressIndicator()
+                            LoadingIndicator()
                         }
                     }
                 }

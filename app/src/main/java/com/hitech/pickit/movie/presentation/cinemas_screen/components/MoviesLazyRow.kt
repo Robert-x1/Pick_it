@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
+
 package com.hitech.pickit.movie.presentation.cinemas_screen.components
 
 import androidx.compose.foundation.Image
@@ -10,7 +12,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,7 +38,7 @@ fun MoviesLazyRow(
             contentAlignment = Alignment.Center
         ) {
             //shimmer
-            CircularProgressIndicator()
+            LoadingIndicator()
         }
     } else {
 
