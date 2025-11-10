@@ -67,7 +67,8 @@ fun LanguageProfileMenuItem(
             Text(
                 text = selectedLanguage,
                 style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Light
+                fontWeight = FontWeight.Light,
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
 
