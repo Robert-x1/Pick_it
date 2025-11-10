@@ -15,15 +15,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.hitech.pickit.movie.utili.MoviePoster
-import com.hitech.pickit.movie.utili.SearchData
+import com.hitech.pickit.R
+import com.hitech.pickit.movie.presentation.seachScreen.components.MoviePoster
+import com.hitech.pickit.movie.presentation.seachScreen.components.SearchBar
+import com.hitech.pickit.movie.presentation.seachScreen.components.SearchData
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -64,44 +66,6 @@ fun SearchScreen() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SearchBar(searchText: String, onTextChange: (String) -> Unit) {
-    OutlinedTextField(
-        value = searchText,
-        onValueChange = onTextChange,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp)),
-        placeholder = {
-            Text(
-                "Search movie, shows, genre, etc",
-                color = Color.White.copy(alpha = 0.7f)
-            )
-        },
-        leadingIcon = {
-            Icon(
-                Icons.Default.Search,
-                contentDescription = "Search",
-                tint = Color.White.copy(alpha = 0.7f)
-            )
-        },
-        colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.surface,
-            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
-            focusedBorderColor = MaterialTheme.colorScheme.primaryContainer,
-            unfocusedBorderColor = MaterialTheme.colorScheme.surface,
-            cursorColor = MaterialTheme.colorScheme.primaryContainer,
-            focusedTextColor = Color.White,
-            unfocusedTextColor = Color.White,
-            focusedLeadingIconColor = Color.White,
-            unfocusedLeadingIconColor = Color.White,
-            focusedPlaceholderColor = Color.White.copy(alpha = 0.7f),
-            unfocusedPlaceholderColor = Color.White.copy(alpha = 0.7f)
-        ),
-        singleLine = true
-    )
-}
 
 @Composable
 fun SectionTitle(title: String) {
@@ -136,7 +100,7 @@ fun MoviePosterCard(movie: MoviePoster, onClick: (String) -> Unit) {
         modifier = Modifier
             .width(120.dp)
             .clip(RoundedCornerShape(8.dp))
-            .background(MaterialTheme.colorScheme.surfaceBright)
+            .background(MaterialTheme.colorScheme.surfaceVariant)
             .clickable { onClick(movie.title) }) {
         AsyncImage(
             model = movie.imageUrl,
@@ -149,7 +113,7 @@ fun MoviePosterCard(movie: MoviePoster, onClick: (String) -> Unit) {
         )
         Text(
             text = movie.title,
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onSurface,
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
@@ -178,7 +142,7 @@ fun TagsGrid(tags: List<String>, onTagClick: (String) -> Unit) {
                     )
                 },
                 colors = FilterChipDefaults.filterChipColors(
-                    containerColor = MaterialTheme.colorScheme.surface,
+                    containerColor = MaterialTheme.colorScheme.surfaceBright,
                     labelColor =Color.White,
                     selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
                     selectedLabelColor = Color.White

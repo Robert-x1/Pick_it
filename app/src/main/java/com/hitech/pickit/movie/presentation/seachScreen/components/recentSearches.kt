@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -17,26 +18,37 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hitech.pickit.R
-import com.hitech.pickit.movie.utili.MoviePoster
-import com.hitech.pickit.movie.utili.SearchData
+import com.hitech.pickit.movie.utili.MoviePosterAndNameCard
 import com.hitech.pickit.ui.MoviePosterCard
+import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
 fun RecentSearches(
     modifier: Modifier = Modifier,
-//    recentSearches: List<MoviePoster>,
-//    onItemClick: (String) -> Unit
+   recentSearches: List<MoviePoster>, onItemClick: (String) -> Unit
 ) {
 
     Column(modifier = modifier.fillMaxWidth()) {
         Text(
             text = stringResource(R.string.recent_searches),
-            color = Color.White,
+            color = MaterialTheme.colorScheme.onSurface,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 12.dp)
         )
 
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            recentSearches.forEach { movie ->
+                MoviePosterAndNameCard(movie = movie) { selectedText ->
+                    onItemClick(selectedText)
+                }
+            }
+        }
 
     }
 }
@@ -44,7 +56,9 @@ fun RecentSearches(
 @PreviewLightDark
 @Composable
 private fun test() {
-    RecentSearches()
+    PickItTheme {
+        RecentSearches(recentSearches = SearchData.recentSearches, onItemClick = { })
+    }
 
 }
 

@@ -1,8 +1,5 @@
-package com.hitech.pickit.movie.utili
-data class MoviePoster(
-    val title: String,
-    val imageUrl: String
-)
+package com.hitech.pickit.movie.presentation.seachScreen.components
+
 object SearchData {
     val recentSearches = listOf(
         MoviePoster("Football Match", "https://via.placeholder.com/200/FF0000/FFFFFF?text=Football"),

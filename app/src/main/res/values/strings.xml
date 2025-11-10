@@ -6,4 +6,7 @@
     <string name="unknow_error">Something went Wrong! Please Try Again Later .</string>
     <string name="serialization_error">can not do serialization!</string>
     <string name="recent_searches">Recent searches</string>
+    <string name="genres">Genres</string>
+    <string name="languages">Languages</string>
+    <string name="search">Search</string>
 </resources>

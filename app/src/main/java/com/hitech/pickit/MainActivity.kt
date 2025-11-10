@@ -32,7 +32,6 @@ class MainActivity : ComponentActivity() {
                             .padding(innerPadding), contentAlignment = Alignment.Center
                     ) {
 
-                        RecentSearches()
                     }
                 }
 
