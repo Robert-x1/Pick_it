@@ -1,5 +1,6 @@
 package com.hitech.pickit.movie.presentation.movie_fav_list.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.hitech.pickit.core.presentation.utils.getCategoryFromId
 import com.hitech.pickit.ui.theme.PickItTheme
 
+@SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
 fun CategoryItems(
     modifier: Modifier = Modifier,
