@@ -17,7 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.hitech.pickit.movie.presentation.movieScreen.MovieListRoute
-import com.hitech.pickit.profile.presentation.profile.NewProfileScreen
+import com.hitech.pickit.movie.presentation.seachScreen.components.RecentSearches
 import com.hitech.pickit.ui.theme.PickItTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,7 +41,6 @@ class MainActivity : ComponentActivity() {
                            , contentAlignment = Alignment.Center
                     ) {
 
-                        NewProfileScreen()
                     }
                 }
 
