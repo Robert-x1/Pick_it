@@ -1,4 +1,5 @@
 package com.hitech.pickit.ui
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -17,11 +18,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.myapp.data.MoviePoster
-import com.example.myapp.data.SearchData
 import coil.compose.AsyncImage
+import com.hitech.pickit.movie.utili.MoviePoster
+import com.hitech.pickit.movie.utili.SearchData
+import com.hitech.pickit.ui.theme.PickItTheme
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen() {
@@ -30,8 +34,7 @@ fun SearchScreen() {
     Scaffold(
         bottomBar = {
             BottomNavigationBar()
-        },
-        containerColor = _root_ide_package_.com.example.myapp.ui.theme.DarkBackground
+        }, containerColor = MaterialTheme.colorScheme.surface
     ) { paddingValues ->
         Column(
             modifier = Modifier
@@ -45,23 +48,17 @@ fun SearchScreen() {
 
             SectionTitle("Recent searches")
             RecentSearchesRow(
-                recentSearches = SearchData.recentSearches,
-                onItemClick = { searchText = it }
-            )
+                recentSearches = SearchData.recentSearches, onItemClick = { searchText = it })
             Spacer(modifier = Modifier.height(24.dp))
 
             SectionTitle("Genres")
             TagsGrid(
-                tags = SearchData.genres,
-                onTagClick = { searchText = it }
-            )
+                tags = SearchData.genres, onTagClick = { searchText = it })
             ViewMoreButton(label = "View more", onClick = { /* TODO: Genres list */ })
             Spacer(modifier = Modifier.height(24.dp))
             SectionTitle("Languages")
             TagsGrid(
-                tags = SearchData.languages,
-                onTagClick = { searchText = it }
-            )
+                tags = SearchData.languages, onTagClick = { searchText = it })
             ViewMoreButton(label = "View more", onClick = { /* TODO: Languages list */ })
         }
     }
@@ -76,20 +73,31 @@ fun SearchBar(searchText: String, onTextChange: (String) -> Unit) {
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp)),
-        placeholder = { Text("Search movie, shows, genre, etc", color = _root_ide_package_.com.example.myapp.ui.theme.LightText.copy(alpha = 0.7f)) },
-        leadingIcon = { Icon(Icons.Default.Search, contentDescription = "Search", tint = _root_ide_package_.com.example.myapp.ui.theme.LightText.copy(alpha = 0.7f)) },
+        placeholder = {
+            Text(
+                "Search movie, shows, genre, etc",
+                color = Color.White.copy(alpha = 0.7f)
+            )
+        },
+        leadingIcon = {
+            Icon(
+                Icons.Default.Search,
+                contentDescription = "Search",
+                tint = Color.White.copy(alpha = 0.7f)
+            )
+        },
         colors = OutlinedTextFieldDefaults.colors(
-            focusedContainerColor = _root_ide_package_.com.example.myapp.ui.theme.DarkSurface,
-            unfocusedContainerColor = _root_ide_package_.com.example.myapp.ui.theme.DarkSurface,
-            focusedBorderColor = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary,
-            unfocusedBorderColor = _root_ide_package_.com.example.myapp.ui.theme.DarkSurface,
-            cursorColor = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary,
-            focusedTextColor = _root_ide_package_.com.example.myapp.ui.theme.LightText,
-            unfocusedTextColor = _root_ide_package_.com.example.myapp.ui.theme.LightText,
-            focusedLeadingIconColor = _root_ide_package_.com.example.myapp.ui.theme.LightText,
-            unfocusedLeadingIconColor = _root_ide_package_.com.example.myapp.ui.theme.LightText,
-            focusedPlaceholderColor = _root_ide_package_.com.example.myapp.ui.theme.LightText.copy(alpha = 0.7f),
-            unfocusedPlaceholderColor = _root_ide_package_.com.example.myapp.ui.theme.LightText.copy(alpha = 0.7f)
+            focusedContainerColor = MaterialTheme.colorScheme.surface,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+            focusedBorderColor = MaterialTheme.colorScheme.primaryContainer,
+            unfocusedBorderColor = MaterialTheme.colorScheme.surface,
+            cursorColor = MaterialTheme.colorScheme.primaryContainer,
+            focusedTextColor = Color.White,
+            unfocusedTextColor = Color.White,
+            focusedLeadingIconColor = Color.White,
+            unfocusedLeadingIconColor = Color.White,
+            focusedPlaceholderColor = Color.White.copy(alpha = 0.7f),
+            unfocusedPlaceholderColor = Color.White.copy(alpha = 0.7f)
         ),
         singleLine = true
     )
@@ -99,7 +107,7 @@ fun SearchBar(searchText: String, onTextChange: (String) -> Unit) {
 fun SectionTitle(title: String) {
     Text(
         text = title,
-        color = _root_ide_package_.com.example.myapp.ui.theme.LightText,
+        color = Color.White,
         fontSize = 18.sp,
         fontWeight = FontWeight.Bold,
         modifier = Modifier.padding(bottom = 12.dp)
@@ -128,9 +136,8 @@ fun MoviePosterCard(movie: MoviePoster, onClick: (String) -> Unit) {
         modifier = Modifier
             .width(120.dp)
             .clip(RoundedCornerShape(8.dp))
-            .background(_root_ide_package_.com.example.myapp.ui.theme.DarkSurface)
-            .clickable { onClick(movie.title) }
-    ) {
+            .background(MaterialTheme.colorScheme.surfaceBright)
+            .clickable { onClick(movie.title) }) {
         AsyncImage(
             model = movie.imageUrl,
             contentDescription = movie.title,
@@ -142,7 +149,7 @@ fun MoviePosterCard(movie: MoviePoster, onClick: (String) -> Unit) {
         )
         Text(
             text = movie.title,
-            color = _root_ide_package_.com.example.myapp.ui.theme.LightText,
+            color = Color.White,
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
@@ -164,11 +171,16 @@ fun TagsGrid(tags: List<String>, onTagClick: (String) -> Unit) {
             FilterChip(
                 selected = false,
                 onClick = { onTagClick(tag) },
-                label = { Text(tag, color = _root_ide_package_.com.example.myapp.ui.theme.LightText) },
+                label = {
+                    Text(
+                        tag,
+                        color =Color.White
+                    )
+                },
                 colors = FilterChipDefaults.filterChipColors(
-                    containerColor = _root_ide_package_.com.example.myapp.ui.theme.DarkSurface,
-                    labelColor = _root_ide_package_.com.example.myapp.ui.theme.LightText,
-                    selectedContainerColor = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary,
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    labelColor =Color.White,
+                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
                     selectedLabelColor = Color.White
                 ),
                 border = null
@@ -182,13 +194,13 @@ fun ViewMoreButton(label: String, onClick: () -> Unit) {
     TextButton(onClick = onClick) {
         Text(
             text = label,
-            color = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary,
+            color = MaterialTheme.colorScheme.primaryContainer,
             fontSize = 14.sp
         )
         Icon(
             imageVector = Icons.Default.KeyboardArrowDown,
             contentDescription = label,
-            tint = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary,
+            tint = MaterialTheme.colorScheme.primaryContainer,
             modifier = Modifier.size(20.dp)
         )
     }
@@ -197,41 +209,69 @@ fun ViewMoreButton(label: String, onClick: () -> Unit) {
 @Composable
 fun BottomNavigationBar() {
     NavigationBar(
-        containerColor = _root_ide_package_.com.example.myapp.ui.theme.DarkSurface,
-        contentColor = _root_ide_package_.com.example.myapp.ui.theme.LightText
+        containerColor = MaterialTheme.colorScheme.surface,
+        contentColor = Color.White
     ) {
         NavigationBarItem(
-            selected = false, onClick = { },
-            icon = { Icon(Icons.Default.Home, contentDescription = "Home", tint = _root_ide_package_.com.example.myapp.ui.theme.LightText) },
-            colors = NavigationBarItemDefaults.colors(indicatorColor = _root_ide_package_.com.example.myapp.ui.theme.OrangeTransparent)
+            selected = false,
+            onClick = { },
+            icon = {
+                Icon(
+                    Icons.Default.Home,
+                    contentDescription = "Home",
+                    tint = Color.White
+                )
+            },
+            colors = NavigationBarItemDefaults.colors(indicatorColor =MaterialTheme.colorScheme.primaryContainer)
         )
         NavigationBarItem(
-            selected = true, onClick = { },
-            icon = { Icon(Icons.Default.Search, contentDescription = "Search", tint = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary) },
+            selected = true,
+            onClick = { },
+            icon = {
+                Icon(
+                    Icons.Default.Search,
+                    contentDescription = "Search",
+                    tint = MaterialTheme.colorScheme.primaryContainer
+                )
+            },
             colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary,
-                selectedTextColor = _root_ide_package_.com.example.myapp.ui.theme.OrangePrimary,
-                indicatorColor = _root_ide_package_.com.example.myapp.ui.theme.OrangeTransparent
+                selectedIconColor = MaterialTheme.colorScheme.onSurface,
+                selectedTextColor = MaterialTheme.colorScheme.onSurface,
+                indicatorColor = MaterialTheme.colorScheme.surface
             )
         )
         NavigationBarItem(
-            selected = false, onClick = { },
-            icon = { Icon(Icons.Default.Favorite, contentDescription = "Favorites", tint = _root_ide_package_.com.example.myapp.ui.theme.LightText) },
-            colors = NavigationBarItemDefaults.colors(indicatorColor = _root_ide_package_.com.example.myapp.ui.theme.OrangeTransparent)
+            selected = false,
+            onClick = { },
+            icon = {
+                Icon(
+                    Icons.Default.Favorite,
+                    contentDescription = "Favorites",
+                    tint = MaterialTheme.colorScheme.onSurface
+                )
+            },
+            colors = NavigationBarItemDefaults.colors(indicatorColor = MaterialTheme.colorScheme.primaryContainer)
         )
         NavigationBarItem(
-            selected = false, onClick = { },
-            icon = { Icon(Icons.Default.Person, contentDescription = "Profile", tint = _root_ide_package_.com.example.myapp.ui.theme.LightText) },
-            colors = NavigationBarItemDefaults.colors(indicatorColor = _root_ide_package_.com.example.myapp.ui.theme.OrangeTransparent)
+            selected = false,
+            onClick = { },
+            icon = {
+                Icon(
+                    Icons.Default.Person,
+                    contentDescription = "Profile",
+                    tint = MaterialTheme.colorScheme.onSurface
+                )
+            },
+            colors = NavigationBarItemDefaults.colors(indicatorColor = MaterialTheme.colorScheme.primaryContainer)
         )
     }
 }
 
-@Preview(showBackground = true)
+@PreviewLightDark
 @Composable
 fun PreviewSearchScreen() {
-    _root_ide_package_.com.example.myapp.ui.theme.MovieSearchTheme {
-        Surface(color = MaterialTheme.colorScheme.background) {
+    PickItTheme {
+        Surface(color = MaterialTheme.colorScheme.surface) {
             SearchScreen()
         }
     }
