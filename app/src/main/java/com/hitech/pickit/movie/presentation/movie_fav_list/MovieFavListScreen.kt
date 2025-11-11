@@ -3,7 +3,7 @@
 package com.hitech.pickit.movie.presentation.movie_fav_list
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.Image
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,36 +13,76 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.hitech.pickit.R
+import coil.compose.AsyncImage
+import com.hitech.pickit.movie.presentation.models.toMovieUi
 import com.hitech.pickit.movie.presentation.movie_fav_list.components.MovieListItem
-import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
-import com.hitech.pickit.movie.utili.MovieState
-import com.hitech.pickit.ui.theme.PickItTheme
+import kotlin.math.abs
 
 
 @SuppressLint("ConfigurationScreenWidthHeight")
 @Composable
-fun MovieListScreen(
-    state: MovieState,
+fun MovieFavListScreen(
+    state: DiscoverMoviesViewModel.MovieListUiState,
     modifier: Modifier = Modifier
 ) {
 
     val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
     val screenHeight = configuration.screenHeightDp.dp
     val screenWidth = configuration.screenWidthDp.dp
+
+    val itemHeight =
+        if (isLandscape) screenHeight * 0.8f
+        else screenHeight * 0.9f
+
+    val itemWidth =
+        if (isLandscape) screenWidth * 0.26f
+        else screenWidth * 0.9f
+
+    val listState = rememberLazyListState()
+
+    var selectedImage by remember { mutableStateOf("") }
+
+
+    LaunchedEffect(listState, state.movies) {
+        snapshotFlow { listState.layoutInfo.visibleItemsInfo }
+            .collect { items ->
+
+                if (items.isEmpty() || state.movies.isEmpty()) return@collect
+
+                val viewportCenter = listState.layoutInfo.viewportEndOffset / 2
+
+                val centerItem = items.minByOrNull { item ->
+                    val itemCenter = item.offset + item.size / 2
+                    abs(itemCenter - viewportCenter)
+                }
+
+                centerItem?.let {
+                    val movie = state.movies[it.index]
+                    selectedImage = "https://image.tmdb.org/t/p/w500${movie.picture}"
+                }
+            }
+    }
+
+
     if (state.isLoading) {
         Box(
             modifier = modifier
@@ -51,7 +91,7 @@ fun MovieListScreen(
             contentAlignment = Alignment.Center
         ) {
             //shimmer
-            LoadingIndicator()
+            LoadingIndicator(color = MaterialTheme.colorScheme.primaryContainer)
         }
 
     } else {
@@ -62,11 +102,13 @@ fun MovieListScreen(
             contentAlignment = Alignment.Center
         ) {
 
-            Image(
-                modifier = Modifier.fillMaxSize(),
-                painter = painterResource(R.drawable.joker),
+            AsyncImage(
+                model = selectedImage,
                 contentDescription = "",
-                contentScale = ContentScale.Crop, alignment = Alignment.TopCenter
+                modifier = Modifier
+                    .fillMaxSize(),
+                alignment = Alignment.TopCenter,
+                contentScale = ContentScale.FillBounds,
             )
             Box(
                 modifier = Modifier
@@ -82,6 +124,7 @@ fun MovieListScreen(
                     )
             )
             LazyRow(
+                state = listState,
                 modifier = Modifier,
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.Bottom
@@ -91,13 +134,13 @@ fun MovieListScreen(
                     key = { it.id }
                 ) { movie ->
                     MovieListItem(
-                        movieUi = movie,
+                        movieUi = movie.toMovieUi(),
                         onclick = {},
                         screenHeight = screenHeight,
                         modifier = Modifier
                             .padding(start = 16.dp, top = 50.dp)
-                            .height(screenHeight * 0.9f)
-                            .width(screenWidth * 0.9f)
+                            .height(itemHeight)
+                            .width(itemWidth)
                     )
                 }
             }
@@ -108,22 +151,6 @@ fun MovieListScreen(
 
 }
 
-
-@Preview
-@Composable
-private fun MovieFavListScreenPreview() {
-    PickItTheme {
-        MovieListScreen(
-            state = MovieState(
-                movies = (1..5).map {
-                    MoviePreview.copy(id = it.toString())
-                }
-
-            )
-        )
-    }
-
-}
 
 
 

@@ -52,7 +52,7 @@ fun MoviesLazyRow(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 50.dp, end = 50.dp)
+                        .padding(start = 35.dp, end = 50.dp)
                         .padding(start = 20.dp)
                 ) {
                     PostBorder {
