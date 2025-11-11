@@ -1,6 +1,6 @@
 package com.hitech.pickit.movie.presentation.movie_fav_list.components
 
-import androidx.compose.foundation.Image
+import android.content.res.Configuration
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -23,12 +25,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.hitech.pickit.R
+import coil.compose.AsyncImage
 import com.hitech.pickit.movie.domain.Movie
 import com.hitech.pickit.movie.presentation.models.MovieUi
 import com.hitech.pickit.movie.presentation.models.toMovieUi
@@ -43,10 +45,19 @@ fun MovieListItem(
     screenHeight: Dp,
     modifier: Modifier = Modifier
 ) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
+    val imageHeight =
+        if (isLandscape) screenHeight * 0.66f
+        else screenHeight * 0.5f
+    val imageWidth =
+        if (isLandscape) screenHeight * 0.5f
+        else screenHeight * 0.8f
     Card(
         modifier = modifier
             .background(Color.Transparent)
+            .width(imageWidth)
             .padding(15.dp)
             .padding(top = 15.dp),
         elevation = CardDefaults.cardElevation(20.dp),
@@ -54,23 +65,24 @@ fun MovieListItem(
     ) {
         Column(
             modifier = Modifier
-                .height(screenHeight)
                 .fillMaxHeight()
+                .verticalScroll(rememberScrollState())
                 .background(MaterialTheme.colorScheme.surface),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top
-        ) {
+            verticalArrangement = Arrangement.Top,
+
+            ) {
             Card(
                 modifier = Modifier
                     .fillMaxWidth(0.95f)
                     .padding(horizontal = 10.dp)
                     .padding(vertical = 12.dp)
-                    .height(screenHeight * 0.5f),
+                    .height(imageHeight),
                 shape = RoundedCornerShape(80f)
 
             ) {
-                Image(
-                    painter = painterResource(R.drawable.joker),
+                AsyncImage(
+                    model = "https://image.tmdb.org/t/p/w500${movieUi.picture}",
                     contentDescription = "",
                     modifier = Modifier
                         .fillMaxSize(),
@@ -80,7 +92,7 @@ fun MovieListItem(
             }
             Text(
                 movieUi.name,
-                style = MaterialTheme.typography.displayMedium
+                style = MaterialTheme.typography.displayMedium.copy(fontSize = 30.sp)
             )
 
 
@@ -139,7 +151,7 @@ fun MovieListItem(
 }
 
 
-@Preview
+@PreviewScreenSizes
 @Composable
 private fun MovieItemPreview() {
     PickItTheme {

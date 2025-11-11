@@ -9,9 +9,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -51,7 +51,7 @@ fun MovieListScreen(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                CircularProgressIndicator()
+                LoadingIndicator(color = MaterialTheme.colorScheme.primaryContainer)
             }
         }
 
@@ -81,7 +81,7 @@ fun MovieListScreen(
                                 .padding(16.dp),
                             contentAlignment = Alignment.Center
                         ) {
-                            LoadingIndicator()
+                            LoadingIndicator(color = MaterialTheme.colorScheme.primaryContainer)
                         }
                     }
                 }

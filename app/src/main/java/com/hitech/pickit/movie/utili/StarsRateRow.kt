@@ -32,6 +32,8 @@ fun StarsRate(
     starSizeDp: Int = 30,
 ) {
 
+    val rateStar = rate.value/2.0
+
     Row(
         modifier = modifier
             .fillMaxWidth(),
@@ -58,14 +60,14 @@ fun StarsRate(
             for (i in 1..starsCount) {
 
                 when {
-                    rate.value >= i -> Icon(
+                    rateStar >= i -> Icon(
                         imageVector = activeStar,
                         contentDescription = null,
                         tint = Color.Yellow.copy(green = 0.75f),
                         modifier = Modifier.size(starSizeDp.dp)
                     )
 
-                    rate.value >= i.toFloat() - 0.5f -> Icon(
+                    rateStar >= i.toFloat() - 0.5f -> Icon(
                         imageVector = halfActiveStar,
                         contentDescription = null,
                         tint = Color.Yellow.copy(green = 0.75f),
