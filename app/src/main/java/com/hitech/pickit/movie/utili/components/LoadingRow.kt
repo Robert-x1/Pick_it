@@ -27,7 +27,7 @@ fun LoadingRow(modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.spacedBy(Spacing.medium_8, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        LoadingIndicator(modifier = Modifier.Companion.size(Spacing.huge_56), color = MaterialTheme.colorScheme.primaryContainer)
+        LoadingIndicator(modifier = Modifier.size(Spacing.huge_56), color = MaterialTheme.colorScheme.primaryContainer)
     }
 }
 

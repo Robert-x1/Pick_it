@@ -44,7 +44,7 @@ fun ErrorScreen(
                 fontWeight = FontWeight.W400,
             ),
         )
-        Spacer(modifier = Modifier.Companion.height(Spacing.large_16))
+        Spacer(modifier = Modifier.height(Spacing.large_16))
         Button(
             onClick = refresh,
             colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primaryContainer, contentColor = Color.White),
