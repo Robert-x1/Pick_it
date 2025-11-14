@@ -1,5 +1,6 @@
 package com.hitech.pickit.movie.presentation.cinemas_screen
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,8 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.hitech.pickit.R
 import com.hitech.pickit.movie.presentation.cinemas_screen.components.CinemaSelectorUI
 import com.hitech.pickit.movie.presentation.cinemas_screen.components.MoviesLazyRow
 import com.hitech.pickit.movie.presentation.cinemas_screen.components.WeekCalendarRow
@@ -50,7 +53,7 @@ fun CinemasScreen(modifier: Modifier = Modifier) {
             ),
             shape = RoundedCornerShape(14.dp)
         ) {
-            Text("BOOK A SET ->")
+            Text(stringResource(R.string.book_set))
         }
 
 
