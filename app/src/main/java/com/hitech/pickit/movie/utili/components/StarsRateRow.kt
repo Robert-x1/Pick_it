@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.utili
+package com.hitech.pickit.movie.utili.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row

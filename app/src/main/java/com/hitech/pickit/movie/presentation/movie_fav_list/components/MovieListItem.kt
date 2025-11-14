@@ -34,7 +34,7 @@ import coil.compose.AsyncImage
 import com.hitech.pickit.movie.domain.Movie
 import com.hitech.pickit.movie.presentation.models.MovieUi
 import com.hitech.pickit.movie.presentation.models.toMovieUi
-import com.hitech.pickit.movie.utili.StarsRate
+import com.hitech.pickit.movie.utili.components.StarsRate
 import com.hitech.pickit.ui.theme.PickItTheme
 
 

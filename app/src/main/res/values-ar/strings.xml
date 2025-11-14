@@ -80,4 +80,5 @@
     <string name="cat_war">حربي</string>
     <string name="cat_western">غربي</string>
     <string name="cat_unknown">غير معروف</string>
+    <string name="retry">اعد المحاولة</string>
 </resources>
