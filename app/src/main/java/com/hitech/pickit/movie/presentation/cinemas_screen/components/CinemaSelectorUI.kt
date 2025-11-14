@@ -26,10 +26,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
+import com.hitech.pickit.R
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
@@ -44,51 +46,51 @@ fun CinemaSelectorUI(
     var expandedLocation by remember { mutableStateOf(false) }
 
     val cinemas = listOf(
-        "VOX Cinemas – Mall of Egypt",
-        "VOX Cinemas – City Centre Almaza",
-        "VOX Cinemas – City Centre Alexandria",
-        "Renaissance Cinema – Dandy Mall",
-        "Renaissance Cinema – Down Town",
-        "Zamalek Cinema",
-        "Galaxy Cinema – Gezira Plaza",
-        "Cinepolis – Americana Plaza Zayed",
-        "IMAX – Mall of Arabia",
-        "Miami Cinema – Alexandria",
-        "Odeon Cinema – Cairo",
-        "Cinema Karim – Downtown Cairo",
-        "Metro Cinema – Cairo",
-        "CineMax – Mansoura",
-        "Royal Cinema – Tanta"
+        stringResource(R.string.cinema_vox_mall_of_egypt),
+        stringResource(R.string.cinema_vox_almaza),
+        stringResource(R.string.cinema_vox_alexandria),
+        stringResource(R.string.cinema_renaissance_dandy),
+        stringResource(R.string.cinema_renaissance_downtown),
+        stringResource(R.string.cinema_zamalek),
+        stringResource(R.string.cinema_galaxy_gezira),
+        stringResource(R.string.cinema_cinepolis_americana_plaza),
+        stringResource(R.string.cinema_imax_mall_of_arabia),
+        stringResource(R.string.cinema_miami_alexandria),
+        stringResource(R.string.cinema_odeon_cairo),
+        stringResource(R.string.cinema_karim_downtown),
+        stringResource(R.string.cinema_metro_cairo),
+        stringResource(R.string.cinema_cinemax_mansoura),
+        stringResource(R.string.cinema_royal_tanta)
     )
 
     val locations = listOf(
-        "Cairo",
-        "Giza",
-        "Alexandria",
-        "Qalyubia",
-        "Dakahlia",
-        "Beheira",
-        "Kafr El Sheikh",
-        "Gharbia",
-        "Monufia",
-        "Sharqia",
-        "Damietta",
-        "Port Said",
-        "Ismailia",
-        "Suez",
-        "North Sinai",
-        "South Sinai",
-        "Beni Suef",
-        "Fayoum",
-        "Minya",
-        "Assiut",
-        "Sohag",
-        "Qena",
-        "Luxor",
-        "Aswan",
-        "Red Sea",
-        "New Valley",
-        "Matrouh"
+        stringResource(R.string.location_cairo),
+        stringResource(R.string.location_giza),
+        stringResource(R.string.location_alexandria),
+        stringResource(R.string.location_qalyubia),
+        stringResource(R.string.location_dakahlia),
+        stringResource(R.string.location_beheira),
+        stringResource(R.string.location_kafr_el_sheikh),
+        stringResource(R.string.location_gharbia),
+        stringResource(R.string.location_monufia),
+        stringResource(R.string.location_sharqia),
+        stringResource(R.string.location_damietta),
+        stringResource(R.string.location_port_said),
+        stringResource(R.string.location_ismailia),
+        stringResource(R.string.location_suez),
+        stringResource(R.string.location_north_sinai),
+        stringResource(R.string.location_south_sinai),
+        stringResource(R.string.location_beni_suef),
+        stringResource(R.string.location_fayoum),
+        stringResource(R.string.location_minya),
+        stringResource(R.string.location_assiut),
+        stringResource(R.string.location_sohag),
+        stringResource(R.string.location_qena),
+        stringResource(R.string.location_luxor),
+        stringResource(R.string.location_aswan),
+        stringResource(R.string.location_red_sea),
+        stringResource(R.string.location_new_valley),
+        stringResource(R.string.location_matrouh)
     )
 
     Row(
