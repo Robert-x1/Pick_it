@@ -49,6 +49,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @Composable
 fun MyApp() {
     var showSplash by remember { mutableStateOf(true) }
@@ -57,7 +58,6 @@ fun MyApp() {
         kotlinx.coroutines.delay(2000)
         showSplash = false
     }
-
 
     if (showSplash) {
         SplashScreen()
