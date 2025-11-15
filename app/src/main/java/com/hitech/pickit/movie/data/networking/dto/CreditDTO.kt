@@ -1,8 +1,8 @@
 package com.hitech.pickit.movie.data.networking.dto
 
 
-import com.hitech.pickit.movie.domain.Cast
-import com.hitech.pickit.movie.domain.Crew
+import com.hitech.pickit.movie.domain.model.Cast
+import com.hitech.pickit.movie.domain.model.Crew
 import com.hitech.pickit.movie.presentation.models.Gender
 import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_342_PATH
 import com.hitech.pickit.movie.utili.Constants.ID

@@ -1,9 +1,9 @@
 package com.hitech.pickit.movie.data.networking.dto
 
-import com.hitech.pickit.movie.presentation.models.Genre
-import com.hitech.pickit.movie.presentation.models.MovieDetails
-import com.hitech.pickit.movie.presentation.models.SpokenLanguage
-import com.hitech.pickit.movie.presentation.models.TVShowDetails
+import com.hitech.pickit.movie.domain.model.Genre
+import com.hitech.pickit.movie.domain.model.MovieDetails
+import com.hitech.pickit.movie.domain.model.SpokenLanguage
+import com.hitech.pickit.movie.domain.model.TVShowDetails
 import com.hitech.pickit.movie.utili.Constants.BACKDROP_PATH
 import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_342_PATH
 import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_780_PATH

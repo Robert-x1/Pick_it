@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.models
+package com.hitech.pickit.movie.domain.model
 
 interface TMDbItemDetails {
     val backdropPath: String?

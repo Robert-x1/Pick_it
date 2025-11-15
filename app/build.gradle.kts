@@ -10,9 +10,12 @@ plugins {
 
 }
 
- val localProperties = Properties().apply {
-            load(project.rootProject.file("local.properties").inputStream())
-        }
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
 
 android {
     namespace = "com.hitech.pickit"
@@ -26,8 +29,13 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            type = "String",
+            name = "TMDB_BEARER_TOKEN",
+            value = "\"${localProperties.getProperty("TMDB_BEARER_TOKEN", "")}\""
+        )
     }
 
     buildTypes {
@@ -107,4 +115,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
 
+    implementation("androidx.paging:paging-runtime-ktx:3.3.6")
+    implementation("androidx.paging:paging-compose:3.3.6")
+    // Room
+
+    implementation("androidx.room:room-runtime:2.7.2")
+    annotationProcessor("androidx.room:room-compiler:2.7.2")
+    ksp("androidx.room:room-compiler:2.7.2")
+    implementation("androidx.room:room-ktx:2.7.2")
 }

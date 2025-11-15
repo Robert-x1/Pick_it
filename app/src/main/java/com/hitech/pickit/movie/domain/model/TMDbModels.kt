@@ -1,6 +1,6 @@
-package com.hitech.pickit.movie.presentation.models
+package com.hitech.pickit.movie.domain.model
 
-
+import com.hitech.pickit.movie.presentation.models.TMDbItem
 
 
 data class Movie(

@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.hitech.pickit.core.domain.utils.NetworkError
 import com.hitech.pickit.core.domain.utils.Result
 import com.hitech.pickit.movie.domain.use_case.DiscoverMoviesUseCase
-import com.hitech.pickit.movie.presentation.models.Movie
+import com.hitech.pickit.movie.domain.model.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

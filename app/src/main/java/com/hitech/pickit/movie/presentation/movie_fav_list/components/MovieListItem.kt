@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.hitech.pickit.movie.presentation.models.Movie
+import com.hitech.pickit.movie.domain.model.Movie
 
 import com.hitech.pickit.movie.presentation.models.MovieUi
 import com.hitech.pickit.movie.presentation.models.toMovieUi

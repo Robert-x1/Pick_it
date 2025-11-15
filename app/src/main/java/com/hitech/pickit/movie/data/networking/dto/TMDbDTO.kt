@@ -1,7 +1,7 @@
 package com.hitech.pickit.movie.data.networking.dto
 
-import com.hitech.pickit.movie.presentation.models.Movie
-import com.hitech.pickit.movie.presentation.models.TVShow
+import com.hitech.pickit.movie.domain.model.Movie
+import com.hitech.pickit.movie.domain.model.TVShow
 import com.hitech.pickit.movie.utili.Constants.BACKDROP_PATH
 import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_342_PATH
 import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_780_PATH

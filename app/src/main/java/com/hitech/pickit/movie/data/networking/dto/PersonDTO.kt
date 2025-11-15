@@ -1,6 +1,6 @@
 package com.hitech.pickit.movie.data.networking.dto
 
-import com.hitech.pickit.movie.presentation.models.Person
+import com.hitech.pickit.movie.domain.model.Person
 import com.hitech.pickit.movie.utili.Constants
 import com.hitech.pickit.movie.utili.Constants.ID
 import com.hitech.pickit.movie.utili.Constants.NAME

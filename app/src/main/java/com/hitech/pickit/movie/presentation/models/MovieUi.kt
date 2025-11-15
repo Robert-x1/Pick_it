@@ -1,6 +1,7 @@
 package com.hitech.pickit.movie.presentation.models
 
 import android.icu.text.NumberFormat
+import com.hitech.pickit.movie.domain.model.Movie
 import java.util.Locale
 
 data class MovieUi(

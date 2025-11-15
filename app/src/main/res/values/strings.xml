@@ -5,6 +5,7 @@
     <string name="no_internet">No Internet Connection Please Try Again!\n</string>
     <string name="unknow_error">Something went Wrong! Please Try Again Later .</string>
     <string name="serialization_error">can not do serialization!</string>
+    <string name="server_error">A server error occurred. Please try again later.</string>
     <string name="recent_searches">Recent searches</string>
     <string name="genres">Genres</string>
     <string name="languages">Languages</string>
@@ -78,5 +79,13 @@
     <string name="cat_unknown">Unknown</string>
     <string name="retry">Retry</string>
     <string name="person_content_description">person\n</string>
+    <string name="text_trending">Trending</string>
+    <string name="text_popular">Popular</string>
+    <string name="text_highest_rate">Top Rated</string>
+    <string name="text_discover">Discover</string>
+    <string name="text_now_playing">Now Playing</string>
+    <string name="text_upcoming">Upcoming</string>
+    <string name="text_airing_today">Airing today</string>
+    <string name="text_on_the_air">On the air</string>
 
 </resources>

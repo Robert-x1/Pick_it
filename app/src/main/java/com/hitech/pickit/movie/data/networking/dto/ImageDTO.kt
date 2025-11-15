@@ -1,6 +1,6 @@
 package com.hitech.pickit.movie.data.networking.dto
 
-import com.hitech.pickit.movie.presentation.models.TMDbImage
+import com.hitech.pickit.movie.domain.model.TMDbImage
 import com.hitech.pickit.movie.utili.Constants.BASE_IMAGE_PATH
 import com.hitech.pickit.movie.utili.Constants.ID
 import com.hitech.pickit.movie.utili.Constants.VOTE_AVERAGE

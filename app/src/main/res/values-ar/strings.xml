@@ -6,7 +6,7 @@
     <string name="no_internet">لا يوجد اتصال بالإنترنت.\nيرجى التحقق من اتصالك والمحاولة مرة أخرى!</string>
     <string name="unknow_error">حدث خطأ ما! يرجى المحاولة لاحقًا.</string>
     <string name="serialization_error">حدث خطأ تقني. يرجى المحاولة لاحقًا.</string>
-
+    <string name="server_error">حدث خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقًا.</string>
     <string name="recent_searches">عمليات البحث الأخيرة</string>
     <string name="genres">التصنيفات</string>
     <string name="languages">اللغات</string>
@@ -81,4 +81,12 @@
     <string name="cat_western">غربي</string>
     <string name="cat_unknown">غير معروف</string>
     <string name="retry">اعد المحاولة</string>
+    <string name="text_trending">الأكثر رواجًا</string>
+    <string name="text_popular">الأكثر شعبية</string>
+    <string name="text_highest_rate">الأعلى تقييمًا</string>
+    <string name="text_discover">اكتشف</string>
+    <string name="text_now_playing">يُعرض حاليًا</string>
+    <string name="text_upcoming">قريبًا</string>
+    <string name="text_airing_today">يُعرض اليوم</string>
+    <string name="text_on_the_air">يُعرض الآن</string>
 </resources>

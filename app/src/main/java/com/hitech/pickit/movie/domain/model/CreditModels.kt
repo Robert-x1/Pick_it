@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.domain
+package com.hitech.pickit.movie.domain.model
 
 import com.hitech.pickit.movie.presentation.models.Credit
 import com.hitech.pickit.movie.presentation.models.Gender
