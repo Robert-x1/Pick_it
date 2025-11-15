@@ -1,7 +1,7 @@
 package com.hitech.pickit.di
 
 import com.hitech.pickit.core.domain.repository.MovieRepositoryImpl
-import com.hitech.pickit.movie.data.remote.tmdpApi
+import com.hitech.pickit.movie.data.remote.MovieService
 import com.hitech.pickit.movie.domain.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
@@ -15,7 +15,7 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(api: tmdpApi): MovieRepository {
+    fun provideMovieRepository(api: MovieService): MovieRepository {
         return MovieRepositoryImpl(api)
     }
 }

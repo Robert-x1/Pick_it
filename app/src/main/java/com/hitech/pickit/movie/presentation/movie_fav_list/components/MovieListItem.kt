@@ -26,15 +26,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.tooling.preview.PreviewScreenSizes
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.hitech.pickit.movie.domain.Movie
+import com.hitech.pickit.movie.domain.model.Movie
+
 import com.hitech.pickit.movie.presentation.models.MovieUi
 import com.hitech.pickit.movie.presentation.models.toMovieUi
-import com.hitech.pickit.movie.utili.StarsRate
+import com.hitech.pickit.movie.utili.components.rate.StarsRate
 import com.hitech.pickit.ui.theme.PickItTheme
 
 
@@ -151,7 +152,7 @@ fun MovieListItem(
 }
 
 
-@PreviewScreenSizes
+@PreviewLightDark
 @Composable
 private fun MovieItemPreview() {
     PickItTheme {
@@ -166,11 +167,13 @@ private fun MovieItemPreview() {
 }
 
 internal val MoviePreview = Movie(
-    id = "1",
+    id = 1,
     name = "Joker",
-    rate = 4.5,
-    category = listOf(35, 16, 28, 27, 878, 10770),
-    picture = "TODO()",
-    overview = "null",
-    releaseDate = "TODO()",
+    voteAverage = 8.5,
+    genreIds = listOf(35, 16, 28, 27, 878, 10770),
+    posterUrl = "TODO()",
+    overview = "IT All Aout That U Are See A NONE Real Data So IT Just For Testing",
+    releaseDate = "2008-07-18",
+    voteCount = 30000,
+    backdropUrl = ""
 ).toMovieUi()

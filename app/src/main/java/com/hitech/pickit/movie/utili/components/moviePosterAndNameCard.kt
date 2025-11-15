@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.utili
+package com.hitech.pickit.movie.utili.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -17,13 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.hitech.pickit.movie.presentation.seachScreen.components.MoviePoster
-import com.hitech.pickit.movie.presentation.seachScreen.components.SearchData
-import com.hitech.pickit.ui.theme.PickItTheme
 
 
 @Composable

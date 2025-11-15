@@ -1,7 +1,7 @@
 package com.hitech.pickit.movie.presentation.models
 
 import android.icu.text.NumberFormat
-import com.hitech.pickit.movie.domain.Movie
+import com.hitech.pickit.movie.domain.model.Movie
 import java.util.Locale
 
 data class MovieUi(
@@ -12,6 +12,7 @@ data class MovieUi(
     val category: List<Int>,
     val overview: String,
     val releaseDate: String?,
+    val voteCount: Int
 
 )
 
@@ -23,13 +24,14 @@ data class DisplayableNumber(
 
 fun Movie.toMovieUi(): MovieUi {
     return MovieUi(
-        id = id,
+        id = id.toString(),
         name = name,
-        picture = picture,
-        rate = rate.toDisplayableNumber(),
-        category = category,
+        picture = posterUrl,
+        rate = voteAverage.toDisplayableNumber(),
+        category = genreIds,
         overview = overview,
         releaseDate = releaseDate,
+        voteCount = voteCount
     )
 
 

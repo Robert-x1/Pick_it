@@ -10,7 +10,7 @@ import java.io.IOException
 import kotlin.coroutines.coroutineContext
 
 
-suspend inline fun <reified T> safeApiCall(
+suspend inline fun <T> safeApiCall(
     crossinline execute: suspend () -> T
 ):Result<T, NetworkError> {
     return try {

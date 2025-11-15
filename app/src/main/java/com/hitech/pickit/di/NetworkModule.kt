@@ -1,6 +1,9 @@
 package com.hitech.pickit.di
 
-import com.hitech.pickit.movie.data.remote.tmdpApi
+import com.hitech.pickit.BuildConfig
+import com.hitech.pickit.movie.data.remote.MovieService
+import com.hitech.pickit.movie.data.remote.PersonService
+import com.hitech.pickit.movie.data.remote.TVShowService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -11,53 +14,77 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
-object NetworkModule {
 
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor { chain ->
+
+@Module
+    @InstallIn(SingletonComponent::class)
+    object NetworkModule {
+
+        @Provides
+        @Singleton
+        fun provideOkHttpClient(): OkHttpClient {
+            val clientBuilder = OkHttpClient.Builder()
+
+                .readTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(120, TimeUnit.SECONDS)
+
+
+            clientBuilder.addInterceptor { chain ->
                 val request = chain.request().newBuilder()
                     .header(
                         "Authorization",
-                        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMmMzYWRmYjNhOTUzNWNjY2NkMDRhNTRkMmE1ZjQ3OSIsIm5iZiI6MTc1NTc4ODE2Ni4yNDYsInN1YiI6IjY4YTczMzg2YTQ0OTI1NjA0NzNlOGFhZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.utzvRqvLKJ5gagwsXlCJgkrWEMjdg5ozXTCJNhfDxz4"
+                        "Bearer ${BuildConfig.TMDB_BEARER_TOKEN}"
                     )
                     .header("Content-Type", "application/json")
                     .build()
                 chain.proceed(request)
             }
-            .addInterceptor(
-                HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                }
-            )
-            .build()
-    }
 
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        val json = Json {
-            ignoreUnknownKeys = true
+            if (BuildConfig.DEBUG) {
+                clientBuilder.addInterceptor(
+                    HttpLoggingInterceptor().apply {
+                        level = HttpLoggingInterceptor.Level.BODY
+                    }
+                )
+            }
+
+            return clientBuilder.build()
         }
 
-        return Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .client(okHttpClient)
-            .addConverterFactory(
-                json.asConverterFactory("application/json".toMediaType())
-            )
-            .build()
-    }
+        @Provides
+        @Singleton
+        fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+            val json = Json {
+                ignoreUnknownKeys = true
+                coerceInputValues = true
+            }
+
+            return Retrofit.Builder()
+                .baseUrl("https://api.themoviedb.org/")
+                .client(okHttpClient)
+                .addConverterFactory(
+                    json.asConverterFactory("application/json".toMediaType())
+                )
+                .build()
+        }
+
 
     @Provides
     @Singleton
-    fun provideTmdpApi(retrofit: Retrofit): tmdpApi {
-        return retrofit.create(tmdpApi::class.java)
-    }
+    fun provideMovieService(retrofit: Retrofit): MovieService =
+        retrofit.create(MovieService::class.java)
+
+
+    @Singleton
+    @Provides
+    fun provideTVShowService(retrofit: Retrofit): TVShowService =
+        retrofit.create(TVShowService::class.java)
+
+    @Singleton
+    @Provides
+    fun providePersonService(retrofit: Retrofit): PersonService =
+        retrofit.create(PersonService::class.java)
 }

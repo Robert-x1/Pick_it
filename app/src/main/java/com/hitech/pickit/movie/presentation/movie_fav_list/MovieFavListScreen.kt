@@ -59,7 +59,7 @@ fun MovieFavListScreen(
 
     val listState = rememberLazyListState()
 
-    var selectedImage by remember { mutableStateOf("") }
+    var selectedImage: String? by remember { mutableStateOf("") }
 
 
     LaunchedEffect(listState, state.movies) {
@@ -77,7 +77,7 @@ fun MovieFavListScreen(
 
                 centerItem?.let {
                     val movie = state.movies[it.index]
-                    selectedImage = "https://image.tmdb.org/t/p/w500${movie.picture}"
+                    selectedImage = movie.posterUrl
                 }
             }
     }
