@@ -1,17 +1,22 @@
 package com.hitech.pickit.movie.data.mappers
 
-import com.hitech.pickit.movie.data.networking.dto.MovieDto
-import com.hitech.pickit.movie.domain.Movie
+import com.hitech.pickit.movie.data.networking.dto.MovieResponse
+import com.hitech.pickit.movie.presentation.models.Movie
+import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_500_PATH
+import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_780_PATH
 
 
-fun MovieDto.toMovie(): Movie{
+fun MovieResponse.toMovie(): Movie {
     return Movie(
-        id = id.toString(),
-        name = title,
+        id = id,
+        name = name,
         overview = overview,
-        picture =posterPath?.let {posterPath -> "https://image.tmdb.org/t/p/w500$posterPath" },
-        rate = voteAverage,
-        category = genreIds,
-        releaseDate = releaseDate
-    )
+        posterUrl = posterPath?.let { posterPath -> BASE_WIDTH_500_PATH+posterPath },
+        voteAverage = voteAverage,
+        genreIds = genreIds,
+        releaseDate = releaseDate,
+        voteCount = voteCount,
+        backdropUrl = backdropPath?.let { backdropPath -> BASE_WIDTH_500_PATH+backdropPath },
+
+        )
 }

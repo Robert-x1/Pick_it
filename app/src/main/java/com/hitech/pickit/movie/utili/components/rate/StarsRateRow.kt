@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.utili.components
+package com.hitech.pickit.movie.utili.components.rate
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -88,6 +88,7 @@ fun StarsRate(
         }
     }
 }
+
 
 
 @Preview

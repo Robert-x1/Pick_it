@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.hitech.pickit.R
@@ -126,7 +127,7 @@ fun PersonCard(
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun Test() {
     PickItTheme {
@@ -147,11 +148,10 @@ private fun Test() {
                     id = 2,
                     name = "Second Person",
                     role = "Director",
-                    profileUrl = "",
+                    profileUrl = null,
                     gender = Gender.FEMALE
                 ),
                 onPersonClicked = {},
-                testPainter = ColorPainter(Color.Red)
             )
         }
     }

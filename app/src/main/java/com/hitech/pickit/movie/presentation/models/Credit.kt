@@ -13,11 +13,19 @@ val Gender.placeholderIcon: ImageVector
         Gender.FEMALE -> Icons.Rounded.Woman
     }
 
-data class Actor(
-    val id: Int,
-    val role: String,
-    val name: String,
-    val profileUrl: String?,
+interface Credit {
+    val id: Any
+    val role: String
+    val name: String
+    val profileUrl: String?
     val gender: Gender
-)
+}
+
+open class Actor(
+    override val id: Int,
+    override val role: String,
+    override val name: String,
+    override val profileUrl: String?,
+    override val gender: Gender
+) : Credit
 

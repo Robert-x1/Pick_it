@@ -4,14 +4,15 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hitech.pickit.core.domain.utils.NetworkError
 import com.hitech.pickit.core.domain.utils.Result
-import com.hitech.pickit.movie.domain.Movie
 import com.hitech.pickit.movie.domain.use_case.DiscoverMoviesUseCase
+import com.hitech.pickit.movie.presentation.models.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.collections.isNotEmpty
 
 @HiltViewModel
 class DiscoverMoviesViewModel @Inject constructor(
