@@ -1,4 +1,4 @@
-package com.hitech.pickit.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
 
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api

@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
 
-package com.hitech.pickit.movie.presentation.movieScreen.components
+package com.hitech.pickit.movie.presentation.movieFeedScreen.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
