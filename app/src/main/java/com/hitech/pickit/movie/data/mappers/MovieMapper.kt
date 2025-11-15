@@ -3,7 +3,6 @@ package com.hitech.pickit.movie.data.mappers
 import com.hitech.pickit.movie.data.networking.dto.MovieResponse
 import com.hitech.pickit.movie.presentation.models.Movie
 import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_500_PATH
-import com.hitech.pickit.movie.utili.Constants.BASE_WIDTH_780_PATH
 
 
 fun MovieResponse.toMovie(): Movie {
