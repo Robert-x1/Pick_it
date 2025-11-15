@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.movieScreen
+package com.hitech.pickit.movie.presentation.movieFeedScreen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

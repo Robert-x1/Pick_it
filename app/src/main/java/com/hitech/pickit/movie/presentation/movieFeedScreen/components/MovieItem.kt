@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.movieScreen.components
+package com.hitech.pickit.movie.presentation.movieFeedScreen.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

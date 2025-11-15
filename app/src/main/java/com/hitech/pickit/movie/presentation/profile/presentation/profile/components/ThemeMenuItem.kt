@@ -1,4 +1,4 @@
-package com.hitech.pickit.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
-import com.hitech.pickit.profile.util.AppTheme
+import com.hitech.pickit.movie.presentation.profile.util.AppTheme
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable

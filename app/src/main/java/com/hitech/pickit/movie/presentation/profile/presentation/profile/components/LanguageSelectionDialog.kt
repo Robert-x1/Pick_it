@@ -1,4 +1,4 @@
-package com.hitech.pickit.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
@@ -12,7 +12,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
-import com.hitech.pickit.profile.util.Language
+import com.hitech.pickit.movie.presentation.profile.util.Language
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
