@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.PickIt" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.PickIt" parent="android:Theme.Material.Light.NoActionBar"/>
+
+    <!-- داخل themes.xml -->
+    <style name="Theme.MyApp.Splash" parent="android:Theme.Material.Light.NoActionBar">
+        <!-- الخلفية أثناء السلاش -->
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <!-- الأيقونة/اللوجو اللي يظهر (drawable) -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <!-- بعد السلاش، يتحول للثيم الرئيسي -->
+        <item name="postSplashScreenTheme">@style/Theme.MyApp.Splash</item>
+    </style>
+
 </resources>
