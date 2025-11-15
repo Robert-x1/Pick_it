@@ -5,8 +5,8 @@ import com.hitech.pickit.core.domain.utils.NetworkError
 import com.hitech.pickit.core.domain.utils.Result
 import com.hitech.pickit.movie.data.mappers.toMovie
 import com.hitech.pickit.movie.data.remote.tmdpApi
-import com.hitech.pickit.movie.domain.Movie
 import com.hitech.pickit.movie.domain.repository.MovieRepository
+import com.hitech.pickit.movie.presentation.models.Movie
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
@@ -14,7 +14,7 @@ class MovieRepositoryImpl @Inject constructor(
 ) : MovieRepository {
     override suspend fun discoverMovie(page: Int): Result<List<Movie>, NetworkError> {
         return safeApiCall {
-            tmdpApi.discoverMovie(page).results.map { movieDto -> movieDto.toMovie() }
+            tmdpApi.discoverMovie(page).items.map { movieDto -> movieDto.toMovie() }
         }
     }
 }

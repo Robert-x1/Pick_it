@@ -1,4 +1,6 @@
 package com.hitech.pickit.ui.theme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFFA33E00)
@@ -217,6 +219,15 @@ val surfaceContainerDarkHighContrast = Color(0xFF313030)
 val surfaceContainerHighDarkHighContrast = Color(0xFF3C3B3B)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF484646)
 
+@Composable
+fun Color.Companion.rateColors(movieRate: Double): List<Color> = remember(movieRate) {
+    when {
+        movieRate <= 4.5 -> listOf(Color(0xffe32d20), Color(0xff9c180e))
+        movieRate < 7 -> listOf(Color(0xffe36922), Color(0xff963d09))
+        movieRate < 8.5 -> listOf(Color(0xff87bf32), Color(0xff578216))
+        else -> listOf(Color(0xff34c937), Color(0xff0d750f))
+    }
+}
 
 
 

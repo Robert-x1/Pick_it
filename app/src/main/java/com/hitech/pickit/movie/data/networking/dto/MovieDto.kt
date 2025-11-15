@@ -27,7 +27,7 @@ data class MovieDto(
     val overview: String,
 
     @SerialName("popularity")
-    val popularity: Double,
+    val popularity: String?,
 
     @SerialName("poster_path")
     val posterPath: String?, // Nullable for safety

@@ -17,7 +17,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hitech.pickit.R
-import com.hitech.pickit.movie.utili.MoviePosterAndNameCard
+import com.hitech.pickit.movie.utili.components.MoviePosterAndNameCard
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable

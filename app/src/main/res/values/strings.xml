@@ -76,5 +76,7 @@
     <string name="cat_war">War</string>
     <string name="cat_western">Western</string>
     <string name="cat_unknown">Unknown</string>
+    <string name="retry">Retry</string>
+    <string name="person_content_description">person\n</string>
 
 </resources>
