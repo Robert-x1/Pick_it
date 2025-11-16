@@ -21,6 +21,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.hitech.pickit.movie.presentation.movieFeedScreen.MovieListRoute
+import com.hitech.pickit.movie.presentation.onBoardingScreen.MainOnboardingFlow
+import com.hitech.pickit.movie.presentation.onBoardingScreen.components.FirstOnBoardingScreen
+import com.hitech.pickit.movie.presentation.onBoardingScreen.components.SecondOnBoardingScreen
+import com.hitech.pickit.movie.presentation.onBoardingScreen.components.ThirdOnBoardingScreen
 import com.hitech.pickit.ui.theme.OnboardingScreen
 import com.hitech.pickit.ui.theme.PickItTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,19 +37,19 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PickItTheme {
-                Scaffold(
-                    Modifier.fillMaxSize(),
-                    containerColor = MaterialTheme.colorScheme.surface
-                ) { innerPadding ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding), contentAlignment = Alignment.Center
-                    ) {
-                        MovieListRoute()
-
-                    }
-                }
+                MainOnboardingFlow(onFinish = {})
+//                Scaffold(
+//                    Modifier.fillMaxSize(),
+//                    containerColor = MaterialTheme.colorScheme.surface
+//                ) { innerPadding ->
+//                    Box(
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                            .padding(innerPadding), contentAlignment = Alignment.Center
+//                    ) {
+//
+//                    }
+//                }
 
             }
         }
