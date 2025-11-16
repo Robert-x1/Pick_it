@@ -1,6 +1,4 @@
-package com.hitech.pickit.movie.domain
-
-import androidx.annotation.DrawableRes
+package com.hitech.pickit.movie.presentation.onBoardingScreen.components
 
 data class OnBoardingPage(
     val title: String,

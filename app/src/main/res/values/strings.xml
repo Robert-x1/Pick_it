@@ -1,11 +1,22 @@
 <resources>
     <string name="app_name">Pick it</string>
+    <!--OnBoarding-->
+
+    <string name="welcome">Welcome</string>
+    <string name="welcome_to_pick_it">Welcome to PickIt !</string>
+    <string name="movie_picked_for_you">Movies picked just for you!</string>
+    <string name="your_seat_in_seconds">your seat in seconds!</string>
+    <string name="stay_updated_with_the_newest_releases">Stay updated\n with the newest releases!</string>
+    <string name="book_your_ticket_with_ease">Book your ticket with ease...choose your cinema, time, and preferred seat with just one tap</string>
+    <string name="do_not_miss_any_new_movie">Don’t miss any new movie!\n Stay updated with the latest releases and offers instantly.</string>
+    <!--Networking-->
     <string name="error_request_timeout">Time Out !</string>
     <string name="too_many_requests">Too Many Requests !</string>
     <string name="no_internet">No Internet Connection Please Try Again!\n</string>
     <string name="unknow_error">Something went Wrong! Please Try Again Later .</string>
     <string name="serialization_error">can not do serialization!</string>
     <string name="server_error">A server error occurred. Please try again later.</string>
+    <!--screens-->
     <string name="recent_searches">Recent searches</string>
     <string name="genres">Genres</string>
     <string name="languages">Languages</string>
