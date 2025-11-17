@@ -6,7 +6,7 @@ import com.hitech.pickit.movie.data.networking.dto.asCastDomainModel
 import com.hitech.pickit.movie.data.networking.dto.asCrewDomainModel
 import com.hitech.pickit.movie.data.networking.dto.asDomainModel
 import com.hitech.pickit.movie.data.networking.dto.asMovieDomainModel
-import com.hitech.pickit.movie.data.remote.MovieService
+import com.hitech.pickit.movie.data.data_source.remote.MovieService
 import com.hitech.pickit.movie.domain.model.Cast
 import com.hitech.pickit.movie.domain.model.Crew
 import com.hitech.pickit.movie.domain.model.MovieDetails

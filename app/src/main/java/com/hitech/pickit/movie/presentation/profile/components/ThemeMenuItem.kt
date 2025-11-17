@@ -1,5 +1,7 @@
-package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -13,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
-import com.hitech.pickit.movie.presentation.profile.util.AppTheme
+import com.hitech.pickit.movie.domain.util.AppTheme
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
@@ -55,17 +57,27 @@ private fun ThemeToggleButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val backgroundColor = if (isSelected) {
-        MaterialTheme.colorScheme.primary
-    } else {
-        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-    }
 
-    val contentColor = if (isSelected) {
-        MaterialTheme.colorScheme.onPrimary
-    } else {
-        MaterialTheme.colorScheme.onSurfaceVariant
-    }
+    // Animation for background and content color
+    val backgroundColor by animateColorAsState(
+        targetValue = if (isSelected) {
+            MaterialTheme.colorScheme.primary
+        } else {
+            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+        },
+        animationSpec = tween(durationMillis = 300), // 300ms animation
+        label = "BackgroundColorAnimation"
+    )
+
+    val contentColor by animateColorAsState(
+        targetValue = if (isSelected) {
+            MaterialTheme.colorScheme.onPrimary
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant
+        },
+        animationSpec = tween(durationMillis = 300),
+        label = "ContentColorAnimation"
+    )
 
     Box(
         contentAlignment = Alignment.Center,

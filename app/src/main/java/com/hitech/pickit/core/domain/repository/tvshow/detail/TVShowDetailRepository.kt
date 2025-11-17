@@ -6,7 +6,7 @@ import com.hitech.pickit.movie.data.networking.dto.asCastDomainModel
 import com.hitech.pickit.movie.data.networking.dto.asCrewDomainModel
 import com.hitech.pickit.movie.data.networking.dto.asDomainModel
 import com.hitech.pickit.movie.data.networking.dto.asTVShowDomainModel
-import com.hitech.pickit.movie.data.remote.TVShowService
+import com.hitech.pickit.movie.data.data_source.remote.TVShowService
 import com.hitech.pickit.movie.domain.model.Cast
 import com.hitech.pickit.movie.domain.model.Crew
 import com.hitech.pickit.movie.domain.model.TMDbImage

@@ -1,9 +1,9 @@
 package com.hitech.pickit.di
 
 import com.hitech.pickit.BuildConfig
-import com.hitech.pickit.movie.data.remote.MovieService
-import com.hitech.pickit.movie.data.remote.PersonService
-import com.hitech.pickit.movie.data.remote.TVShowService
+import com.hitech.pickit.movie.data.data_source.remote.MovieService
+import com.hitech.pickit.movie.data.data_source.remote.PersonService
+import com.hitech.pickit.movie.data.data_source.remote.TVShowService
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides

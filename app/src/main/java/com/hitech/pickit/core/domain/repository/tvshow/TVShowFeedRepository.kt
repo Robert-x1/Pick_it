@@ -5,7 +5,7 @@ import com.hitech.pickit.R
 import com.hitech.pickit.core.domain.repository.BaseFeedRepository
 import com.hitech.pickit.di.IoDispatcher
 import com.hitech.pickit.movie.data.networking.dto.asTVShowDomainModel
-import com.hitech.pickit.movie.data.remote.TVShowService
+import com.hitech.pickit.movie.data.data_source.remote.TVShowService
 import com.hitech.pickit.movie.domain.model.TVShow
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject

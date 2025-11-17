@@ -1,5 +1,6 @@
-package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.components
 
+import android.R
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -19,7 +20,7 @@ fun ProfileTopAppBar(modifier: Modifier = Modifier) {
         title = {
             Text(
                 text = "Profile",
-                color = MaterialTheme.colorScheme.onPrimary,
+                color = Color.White,
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold
             )

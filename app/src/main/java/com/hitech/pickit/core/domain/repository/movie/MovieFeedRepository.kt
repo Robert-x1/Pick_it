@@ -4,7 +4,7 @@ import com.hitech.pickit.R
 import com.hitech.pickit.core.domain.repository.BaseFeedRepository
 import com.hitech.pickit.di.IoDispatcher
 import com.hitech.pickit.movie.data.networking.dto.asMovieDomainModel
-import com.hitech.pickit.movie.data.remote.MovieService
+import com.hitech.pickit.movie.data.data_source.remote.MovieService
 import com.hitech.pickit.movie.domain.model.Movie
 import javax.inject.Inject
 import javax.inject.Singleton

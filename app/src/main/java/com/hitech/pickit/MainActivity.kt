@@ -14,20 +14,27 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hitech.pickit.movie.presentation.movieFeedScreen.MovieListRoute
 import com.hitech.pickit.movie.presentation.onBoardingScreen.MainOnboardingFlow
 import com.hitech.pickit.movie.presentation.onBoardingScreen.components.FirstOnBoardingScreen
 import com.hitech.pickit.movie.presentation.onBoardingScreen.components.SecondOnBoardingScreen
 import com.hitech.pickit.movie.presentation.onBoardingScreen.components.ThirdOnBoardingScreen
+import com.hitech.pickit.movie.presentation.profile.ProfileScreen
+import com.hitech.pickit.movie.domain.util.AppTheme
+import com.hitech.pickit.movie.presentation.profile.viewmodel.ProfileViewModel
 import com.hitech.pickit.ui.theme.OnboardingScreen
 import com.hitech.pickit.ui.theme.PickItTheme
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -36,8 +43,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            PickItTheme {
-                MainOnboardingFlow(onFinish = {})
+            val viewModel: ProfileViewModel = hiltViewModel()
+            val appTheme by viewModel.theme.collectAsStateWithLifecycle()
+            val isDark = appTheme == AppTheme.DARK
+
+            PickItTheme(darkTheme = isDark) {
+                ProfileScreen()
+//                MainOnboardingFlow(onFinish = {})
 //                Scaffold(
 //                    Modifier.fillMaxSize(),
 //                    containerColor = MaterialTheme.colorScheme.surface
@@ -61,7 +73,7 @@ fun MyApp() {
     var showSplash by remember { mutableStateOf(true) }
 
     LaunchedEffect(Unit) {
-        kotlinx.coroutines.delay(2000)
+        delay(2000)
         showSplash = false
     }
 

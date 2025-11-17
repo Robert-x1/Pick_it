@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.data.remote
+package com.hitech.pickit.movie.data.data_source.remote
 
 import com.hitech.pickit.movie.data.networking.dto.ImagesResponse
 import com.hitech.pickit.movie.data.networking.dto.MovieDetailResponse

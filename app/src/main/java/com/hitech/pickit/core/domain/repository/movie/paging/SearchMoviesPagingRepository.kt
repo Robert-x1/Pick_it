@@ -3,7 +3,7 @@ package com.hitech.pickit.core.domain.repository.movie.paging
 import BasePagingSource
 import android.content.Context
 import com.hitech.pickit.core.domain.repository.BasePagingRepository
-import com.hitech.pickit.movie.data.remote.MovieService
+import com.hitech.pickit.movie.data.data_source.remote.MovieService
 import com.hitech.pickit.movie.domain.model.Movie
 import com.sample.tmdb.data.paging.movie.SearchMoviesPagingSource
 import dagger.hilt.android.qualifiers.ApplicationContext

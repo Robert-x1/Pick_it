@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.profile.presentation.profile
+package com.hitech.pickit.movie.presentation.profile
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,24 +8,31 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hitech.pickit.R
-import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.LanguageProfileMenuItem
-import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.ProfileHeader
-import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.ProfileScreenGradient
-import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.ProfileTopAppBar
-import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.ThemeMenuItem
-import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.ToggleMenuItem
-import com.hitech.pickit.movie.presentation.profile.util.AppTheme
-
+import com.hitech.pickit.movie.presentation.profile.components.LanguageProfileMenuItem
+import com.hitech.pickit.movie.presentation.profile.components.ProfileHeader
+import com.hitech.pickit.movie.presentation.profile.components.ProfileScreenGradient
+import com.hitech.pickit.movie.presentation.profile.components.ProfileTopAppBar
+import com.hitech.pickit.movie.presentation.profile.components.ThemeMenuItem
+import com.hitech.pickit.movie.presentation.profile.components.ToggleMenuItem
+import com.hitech.pickit.movie.presentation.profile.viewmodel.ProfileViewModel
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
-fun NewProfileScreen(modifier: Modifier = Modifier) {
+fun ProfileScreen(
+    modifier: Modifier = Modifier,
+    viewModel: ProfileViewModel = hiltViewModel()
+) {
+    val currentTheme by viewModel.theme.collectAsStateWithLifecycle()
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -37,10 +44,10 @@ fun NewProfileScreen(modifier: Modifier = Modifier) {
             topBar = {
                 ProfileTopAppBar()
             },
-            content = {
+            content = { innerPadding ->
                 Column(
                     modifier = Modifier
-                        .padding(it)
+                        .padding(innerPadding)
                         .fillMaxSize(),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -66,8 +73,8 @@ fun NewProfileScreen(modifier: Modifier = Modifier) {
                     )
 
                     ThemeMenuItem(
-                        currentTheme = AppTheme.DARK,
-                        onThemeChange = {},
+                        currentTheme = currentTheme,
+                        onThemeChange = { viewModel.setTheme(it) } ,
                     )
 
                     HorizontalDivider(
@@ -89,6 +96,6 @@ fun NewProfileScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun NewProfileScreenPreview() {
     PickItTheme {
-        NewProfileScreen()
+        ProfileScreen()
     }
 }

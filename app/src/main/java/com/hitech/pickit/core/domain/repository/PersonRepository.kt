@@ -2,7 +2,7 @@ package com.hitech.pickit.core.domain.repository
 
 import com.hitech.pickit.di.IoDispatcher
 import com.hitech.pickit.movie.data.networking.dto.asDomainModel
-import com.hitech.pickit.movie.data.remote.PersonService
+import com.hitech.pickit.movie.data.data_source.remote.PersonService
 import com.hitech.pickit.movie.domain.model.Person
 import com.hitech.pickit.movie.presentation.models.base.BaseRepository
 import javax.inject.Inject

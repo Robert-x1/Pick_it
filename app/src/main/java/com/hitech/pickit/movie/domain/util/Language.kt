@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.profile.util
+package com.hitech.pickit.movie.domain.util
 
 enum class Language(val displayName: String, val code: String) {
     ENGLISH("English", "en"),

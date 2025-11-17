@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -67,7 +67,8 @@ fun LanguageProfileMenuItem(
             Text(
                 text = selectedLanguage,
                 style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Light
+                fontWeight = FontWeight.Light,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
