@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Pick it</string>
-    <!--OnBoarding-->
+    <string name="app_title" translatable="false">PickIt %s</string>
 
     <string name="welcome">Welcome</string>
     <string name="welcome_to_pick_it">Welcome to PickIt !</string>
@@ -9,20 +9,20 @@
     <string name="stay_updated_with_the_newest_releases">Stay updated\n with the newest releases!</string>
     <string name="book_your_ticket_with_ease">Book your ticket with ease...choose your cinema, time, and preferred seat with just one tap</string>
     <string name="do_not_miss_any_new_movie">Don’t miss any new movie!\n Stay updated with the latest releases and offers instantly.</string>
-    <!--Networking-->
+
     <string name="error_request_timeout">Time Out !</string>
     <string name="too_many_requests">Too Many Requests !</string>
     <string name="no_internet">No Internet Connection Please Try Again!\n</string>
     <string name="unknow_error">Something went Wrong! Please Try Again Later .</string>
     <string name="serialization_error">can not do serialization!</string>
     <string name="server_error">A server error occurred. Please try again later.</string>
-    <!--screens-->
+
     <string name="recent_searches">Recent searches</string>
     <string name="genres">Genres</string>
     <string name="languages">Languages</string>
-    <string name="search">Search</string>
     <string name="view_more">View more</string>
-    <!--Locations-->
+    <string name="book_set">BOOK A SET</string>
+
     <string name="location_cairo">Cairo</string>
     <string name="location_giza">Giza</string>
     <string name="location_alexandria">Alexandria</string>
@@ -50,7 +50,7 @@
     <string name="location_red_sea">Red Sea</string>
     <string name="location_new_valley">New Valley</string>
     <string name="location_matrouh">Matrouh</string>
-    <!--Cinema Robert NOT AI-->
+
     <string name="cinema_vox_mall_of_egypt">VOX Cinemas – Mall of Egypt</string>
     <string name="cinema_vox_almaza">VOX Cinemas – City Centre Almaza</string>
     <string name="cinema_vox_alexandria">VOX Cinemas – City Centre Alexandria</string>
@@ -66,8 +66,7 @@
     <string name="cinema_metro_cairo">Metro Cinema – Cairo</string>
     <string name="cinema_cinemax_mansoura">CineMax – Mansoura</string>
     <string name="cinema_royal_tanta">Royal Cinema – Tanta</string>
-    <string name="book_set">BOOK A SET</string>
-    <!--Categories-->
+
     <string name="cat_action">Action</string>
     <string name="cat_adventure">Adventure</string>
     <string name="cat_animation">Animation</string>
@@ -88,8 +87,7 @@
     <string name="cat_war">War</string>
     <string name="cat_western">Western</string>
     <string name="cat_unknown">Unknown</string>
-    <string name="retry">Retry</string>
-    <string name="person_content_description">person\n</string>
+
     <string name="text_trending">Trending</string>
     <string name="text_popular">Popular</string>
     <string name="text_highest_rate">Top Rated</string>
@@ -98,5 +96,51 @@
     <string name="text_upcoming">Upcoming</string>
     <string name="text_airing_today">Airing today</string>
     <string name="text_on_the_air">On the air</string>
+    <string name="back">Back</string>
+
+    <string name="from">From %s</string>
+    <string name="born">Born on %s</string>
+    <string name="death">Death in %s</string>
+    <string name="biography">Biography</string>
+    <string name="person_content_description">Photo of %1$s the %2$s</string>
+
+    <string name="release_date">Release Date</string>
+    <string name="vote_average">Vote Avg</string>
+    <string name="votes">Votes</string>
+    <string name="see_all_items">See All</string>
+    <string name="see_all">See All(%1$d)</string>
+    <string name="cast">Cast</string>
+    <string name="crew">Crew</string>
+    <string name="open">Open</string>
+    <string name="un_favorite">Un-favorite</string>
+    <string name="images">Images</string>
+    <string name="similar">Similar</string>
+
+    <string name="movies">Movies</string>
+    <string name="tv_series">TV Series</string>
+    <string name="failed_loading_msg">Something went wrong</string>
+    <string name="retry">Retry</string>
+    <string name="search_desc">Search</string>
+    <string name="poster_content_description">Poster</string>
+    <string name="more_item">More</string>
+    <string name="likes_content_description">Likes</string>
+    <string name="clear">Clear</string>
+    <string name="no_data_found">No Data Found</string>
+
+    <string name="trending">Trending %s</string>
+    <string name="popular">Popular %s</string>
+    <string name="now_playing">Now Playing %s</string>
+    <string name="upcoming">Upcoming %s</string>
+    <string name="airing_today">Airing today %s</string>
+    <string name="on_the_air">On the air %s</string>
+    <string name="highest_rate">Top Rated %s</string>
+    <string name="discover">Discover %s</string>
+    <string name="similar_items">Similar %s</string>
+    <string name="search">Search</string>
+
+    <string name="favorite">Favorite</string>
+    <string name="movie">Movie</string>
+    <string name="tv_show">TVShow</string>
+    <string name="setting">Setting</string>
 
 </resources>

@@ -27,8 +27,20 @@ data class ImageResponse(
 )
 
 fun ImagesResponse.asDomainModel(): List<TMDbImage> = buildList {
-    addAll(backdrops.map { TMDbImage(String.format(BASE_IMAGE_PATH, it.filePath), it.voteCount) })
-    addAll(posters.map { TMDbImage(String.format(BASE_IMAGE_PATH, it.filePath), it.voteCount) })
+    addAll(backdrops.map {
+        TMDbImage(
+            url = BASE_IMAGE_PATH + it.filePath,
+            voteCount = it.voteCount
+        )
+    })
+
+    addAll(posters.map {
+        TMDbImage(
+            url = BASE_IMAGE_PATH + it.filePath,
+            voteCount = it.voteCount
+        )
+    })
+
     sortByDescending { it.voteCount }
 }
 

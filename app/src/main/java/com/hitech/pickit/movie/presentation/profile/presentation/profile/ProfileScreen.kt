@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
 import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.LanguageProfileMenuItem
@@ -21,7 +21,6 @@ import com.hitech.pickit.movie.presentation.profile.presentation.profile.compone
 import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.ThemeMenuItem
 import com.hitech.pickit.movie.presentation.profile.presentation.profile.components.ToggleMenuItem
 import com.hitech.pickit.movie.presentation.profile.util.AppTheme
-
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
@@ -46,8 +45,8 @@ fun NewProfileScreen(modifier: Modifier = Modifier) {
                 ) {
                     ProfileHeader(
                         avatarResId = R.drawable.joker,
-                        name = "Sherif",
-                        email = "Sherif@gmail.com",
+                        name = "Robert",
+                        email = "robert.romany.dev@gmail.com",
                     )
 
                     Spacer(modifier = Modifier.padding(10.dp))
@@ -85,7 +84,7 @@ fun NewProfileScreen(modifier: Modifier = Modifier) {
     }
 }
 
-@Preview
+@PreviewLightDark
 @Composable
 private fun NewProfileScreenPreview() {
     PickItTheme {

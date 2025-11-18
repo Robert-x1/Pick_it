@@ -35,7 +35,7 @@ data class CrewResponse(
     @SerialName( GENDER)
     val gender: Int,
     @SerialName(ID)
-    val id: String,
+    val id: Int,
 )
 
 fun List<CastResponse>.asCastDomainModel() = map(CastResponse::asCastDomainModel)
@@ -43,29 +43,20 @@ fun List<CastResponse>.asCastDomainModel() = map(CastResponse::asCastDomainModel
 fun List<CrewResponse>.asCrewDomainModel() = map(CrewResponse::asCrewDomainModel)
 
 private fun CastResponse.asCastDomainModel(): Cast = Cast(
-    role,
-    name,
-    profilePath?.let { profilePath ->
-        String.format(
-            BASE_WIDTH_342_PATH,
-            profilePath,
-        )
-    },
-    gender.toGender(),
-    id,
+    role = role,
+    name = name,
+    profileUrl = BASE_WIDTH_342_PATH+profilePath,
+
+    gender = gender.toGender(),
+    id = id,
 )
 
 private fun CrewResponse.asCrewDomainModel(): Crew = Crew(
-    role,
-    name,
-    profilePath?.let { profilePath ->
-        String.format(
-            BASE_WIDTH_342_PATH,
-            profilePath,
-        )
-    },
-    gender.toGender(),
-    id,
+    role = role,
+    name = name,
+    profileUrl = BASE_WIDTH_342_PATH+profilePath,
+    gender = gender.toGender(),
+    id = id,
 )
 
 private fun Int.toGender() = if (this == 1) Gender.FEMALE else Gender.MALE

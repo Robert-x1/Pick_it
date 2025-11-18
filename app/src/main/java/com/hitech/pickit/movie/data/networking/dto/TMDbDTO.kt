@@ -17,7 +17,6 @@ import com.hitech.pickit.movie.utili.Constants.VOTE_AVERAGE
 import com.hitech.pickit.movie.utili.Constants.VOTE_COUNT
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.lang.String.format
 
 
 interface TMDbItemResponse {
@@ -35,92 +34,85 @@ interface TMDbItemResponse {
 
 @Serializable
 data class MovieResponse(
-    @SerialName( ID)
+    @SerialName(ID)
     override val id: Int,
-    @SerialName( OVERVIEW)
+    @SerialName(OVERVIEW)
     override val overview: String,
-    @SerialName( RELEASE_DATE)
+    @SerialName(RELEASE_DATE)
     override val releaseDate: String?,
-    @SerialName( POSTER_PATH)
+    @SerialName(POSTER_PATH)
     override val posterPath: String?,
-    @SerialName( BACKDROP_PATH)
+    @SerialName(BACKDROP_PATH)
     override val backdropPath: String?,
-    @SerialName( TITLE)
+    @SerialName(TITLE)
     override val name: String,
-    @SerialName( VOTE_AVERAGE)
+    @SerialName(VOTE_AVERAGE)
     override val voteAverage: Double,
-    @SerialName( VOTE_COUNT)
+    @SerialName(VOTE_COUNT)
     override val voteCount: Int,
-    @SerialName( GENRE_IDS)
+    @SerialName(GENRE_IDS)
     override val genreIds: List<Int>,
 ) : TMDbItemResponse
 
 @Serializable
 data class TVShowResponse(
-    @SerialName( ID)
+    @SerialName(ID)
     override val id: Int,
-    @SerialName( OVERVIEW)
+    @SerialName(OVERVIEW)
     override val overview: String,
-    @SerialName( FIRST_AIR_DATE)
+    @SerialName(FIRST_AIR_DATE)
     override val releaseDate: String?,
-    @SerialName( POSTER_PATH)
+    @SerialName(POSTER_PATH)
     override val posterPath: String?,
-    @SerialName( BACKDROP_PATH)
+    @SerialName(BACKDROP_PATH)
     override val backdropPath: String?,
-    @SerialName( NAME)
+    @SerialName(NAME)
     override val name: String,
-    @SerialName( VOTE_AVERAGE)
+    @SerialName(VOTE_AVERAGE)
     override val voteAverage: Double,
-    @SerialName( VOTE_COUNT)
+    @SerialName(VOTE_COUNT)
     override val voteCount: Int,
-    @SerialName( GENRE_IDS)
+    @SerialName(GENRE_IDS)
     override val genreIds: List<Int>
 ) : TMDbItemResponse
 
 fun List<MovieResponse>.asMovieDomainModel() = map(MovieResponse::asMovieDomainModel)
 
 fun List<TVShowResponse>.asTVShowDomainModel() = map(TVShowResponse::asTVShowDomainModel)
-
 private fun MovieResponse.asMovieDomainModel(): Movie = Movie(
-    id,
-    overview,
-    releaseDate,
-    posterPath?.let { posterPath ->
-        format(
-            BASE_WIDTH_342_PATH,
-            posterPath,
-        )
+    id = id,
+    overview = overview,
+    releaseDate = releaseDate,
+
+    posterUrl = posterPath?.let { path ->
+        BASE_WIDTH_342_PATH + path
     },
-    backdropPath?.let { backdropPath ->
-        format(
-            BASE_WIDTH_780_PATH,
-            backdropPath,
-        )
+
+    backdropUrl = backdropPath?.let { path ->
+        BASE_WIDTH_780_PATH + path
     },
-    name,
-    voteAverage,
-    voteCount,
-    genreIds
+
+    name = name,
+    voteAverage = voteAverage,
+    voteCount = voteCount,
+    genreIds = genreIds
 )
 
 private fun TVShowResponse.asTVShowDomainModel(): TVShow = TVShow(
-    id,
-    overview,
-    releaseDate,
-    posterPath?.let { posterPath ->
-        format(
-            BASE_WIDTH_342_PATH,
-            posterPath,
-        )
+    id = id,
+    overview = overview,
+    releaseDate = releaseDate,
+
+    posterUrl = posterPath?.let { path ->
+        BASE_WIDTH_342_PATH + path
     },
-    backdropPath?.let { backdropPath ->
-        format(
-            BASE_WIDTH_780_PATH,
-            backdropPath,
-        )
+
+    backdropUrl = backdropPath?.let { path ->
+        BASE_WIDTH_780_PATH + path
     },
-    name,
-    voteAverage,
-    voteCount,
-    genreIds
+
+    name = name,
+    voteAverage = voteAverage,
+    voteCount = voteCount,
+    genreIds = genreIds
 )

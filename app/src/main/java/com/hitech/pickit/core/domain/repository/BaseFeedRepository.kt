@@ -10,7 +10,9 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 
-abstract class BaseFeedRepository<T : TMDbItem>( ioDispatcher: CoroutineDispatcher) :
+abstract class BaseFeedRepository<T : TMDbItem>(
+    ioDispatcher: CoroutineDispatcher
+) :
     BaseRepository<List<FeedWrapper>>( ioDispatcher) {
     protected abstract suspend fun popularItems(): List<T>
 

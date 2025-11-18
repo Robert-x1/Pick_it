@@ -30,7 +30,7 @@ data class MovieDto(
     val popularity: String?,
 
     @SerialName("poster_path")
-    val posterPath: String?, // Nullable for safety
+    val posterPath: String?,
 
     @SerialName("release_date")
     val releaseDate: String,

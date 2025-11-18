@@ -18,5 +18,5 @@ class Crew(
     override val name: String,
     override val profileUrl: String?,
     override val gender: Gender,
-    override val id: String,
+    override val id: Int,
 ) : Credit

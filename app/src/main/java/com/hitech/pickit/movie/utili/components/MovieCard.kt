@@ -19,15 +19,15 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.hitech.pickit.movie.presentation.models.MovieUi
-import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
+import com.hitech.pickit.movie.presentation.models.TMDbUi
+import com.hitech.pickit.movie.presentation.BOOK_list.components.MoviePreview
 import com.hitech.pickit.movie.utili.Spacing
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
 fun MovieCard(
-    movieItem: MovieUi,
-    onFeedClick: (MovieUi) -> Unit,
+    movieItem: TMDbUi,
+    onFeedClick: (TMDbUi) -> Unit,
     imageUrl: String? = movieItem.picture,
     itemWidth: Dp = Spacing.mega_120,
 ) {

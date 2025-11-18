@@ -9,4 +9,6 @@ interface BookmarkDetailsRepository<T : TMDbItem> {
     suspend fun deleteBookmark(id: Int)
 
     suspend fun isBookmarked(id: Int): Boolean
+
+    suspend fun getBookmarks(): List<T>
 }
