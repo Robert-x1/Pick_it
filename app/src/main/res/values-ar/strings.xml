@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pick it</string>
+
+    <!--OnBoarding-->
+    <string name="welcome">مرحباً</string>
+    <string name="welcome_to_pick_it">مرحباً بك في PickIt !</string>
+    <string name="movie_picked_for_you">أفلام اختيرت خصيصاً لك!</string>
+    <string name="your_seat_in_seconds">مقعدك في ثوانٍ!</string>
+    <string name="stay_updated_with_the_newest_releases">كن على اطلاع دائم\n بأحدث الإصدارات!</string>
+    <string name="book_your_ticket_with_ease">احجز تذكرتك بكل سهولة... اختر السينما، الوقت، ومقعدك المفضل بضغطة واحدة</string>
+    <string name="do_not_miss_any_new_movie">لا تفوت أي فيلم جديد!\n تابع آخر الإصدارات والعروض فور صدورها.</string>
+
+    <!--Networking-->
     <string name="error_request_timeout">انتهى الوقت! يرجى المحاولة مرة أخرى.</string>
     <string name="too_many_requests">طلبات كثيرة جدًا! حاول مرة أخرى لاحقًا.</string>
     <string name="no_internet">لا يوجد اتصال بالإنترنت.\nيرجى التحقق من اتصالك والمحاولة مرة أخرى!</string>
     <string name="unknow_error">حدث خطأ ما! يرجى المحاولة لاحقًا.</string>
     <string name="serialization_error">حدث خطأ تقني. يرجى المحاولة لاحقًا.</string>
     <string name="server_error">حدث خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقًا.</string>
+
+    <!--screens-->
     <string name="recent_searches">عمليات البحث الأخيرة</string>
     <string name="genres">التصنيفات</string>
     <string name="languages">اللغات</string>
     <string name="search">بحث</string>
     <string name="view_more">عرض المزيد</string>
 
-    <string name="book_set">احجز مقعدك</string>
     <!--Locations-->
     <string name="location_cairo">القاهرة</string>
     <string name="location_giza">الجيزة</string>
@@ -42,6 +54,7 @@
     <string name="location_red_sea">البحر الأحمر</string>
     <string name="location_new_valley">الوادي الجديد</string>
     <string name="location_matrouh">مطروح</string>
+
     <!--Cinema Robert NOT AI-->
     <string name="cinema_vox_mall_of_egypt">فوكس سينما - مول مصر</string>
     <string name="cinema_vox_almaza">فوكس سينما - سيتي سنتر ألماظة</string>
@@ -58,8 +71,9 @@
     <string name="cinema_metro_cairo">سينما مترو - القاهرة</string>
     <string name="cinema_cinemax_mansoura">سينماكس - المنصورة</string>
     <string name="cinema_royal_tanta">سينما رويال - طنطا</string>
-    <!--Categories-->
+    <string name="book_set">احجز مقعدك</string>
 
+    <!--Categories-->
     <string name="cat_action">أكشن</string>
     <string name="cat_adventure">مغامرة</string>
     <string name="cat_animation">رسوم متحركة</string>
@@ -81,6 +95,7 @@
     <string name="cat_western">غربي</string>
     <string name="cat_unknown">غير معروف</string>
     <string name="retry">اعد المحاولة</string>
+    <string name="person_content_description">person\n</string>
     <string name="text_trending">الأكثر رواجًا</string>
     <string name="text_popular">الأكثر شعبية</string>
     <string name="text_highest_rate">الأعلى تقييمًا</string>
@@ -89,4 +104,15 @@
     <string name="text_upcoming">قريبًا</string>
     <string name="text_airing_today">يُعرض اليوم</string>
     <string name="text_on_the_air">يُعرض الآن</string>
+
+    <!--profile screen-->
+    <string name="Notifications">الاشعارات</string>
+    <string name="Language">اللغة</string>
+
+    <!--language selection dialog-->
+    <string name="cancel">إلغاء</string>
+    <string name="choose_language">اختر اللغة</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="light_mode">الوضع الفاتح</string>
 </resources>

@@ -29,11 +29,12 @@ fun LanguageProfileMenuItem(
     icon: Int,
     text: String,
     selectedLanguage: String? = null,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { /* Navigate to the corresponding screen */ }
+            .clickable { onClick() }
             .padding(horizontal = 24.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -95,7 +96,8 @@ fun LanguageProfileMenuItemPreview() {
         LanguageProfileMenuItem(
             icon = R.drawable.language_icon,
             text = "Language",
-            selectedLanguage = "English (US)"
+            selectedLanguage = "English (US)",
+            onClick = {}
         )
     }
 }

@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
@@ -30,7 +31,7 @@ fun ThemeMenuItem(
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
         ThemeToggleButton(
-            text = "Dark Mode",
+            text = stringResource(R.string.dark_mode),
             icon = R.drawable.dark_mode_icon,
             isSelected = currentTheme == AppTheme.DARK,
             onClick = { onThemeChange(AppTheme.DARK) },
@@ -40,7 +41,7 @@ fun ThemeMenuItem(
         Spacer(modifier = Modifier.width(4.dp))
 
         ThemeToggleButton(
-            text = "Light Mode",
+            text = stringResource(R.string.light_mode),
             icon = R.drawable.light_mode_icon,
             isSelected = currentTheme == AppTheme.LIGHT,
             onClick = { onThemeChange(AppTheme.LIGHT) },
@@ -58,15 +59,13 @@ private fun ThemeToggleButton(
     modifier: Modifier = Modifier
 ) {
 
-    // Animation for background and content color
     val backgroundColor by animateColorAsState(
         targetValue = if (isSelected) {
             MaterialTheme.colorScheme.primary
         } else {
             MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
         },
-        animationSpec = tween(durationMillis = 300), // 300ms animation
-        label = "BackgroundColorAnimation"
+        animationSpec = tween(durationMillis = 300),
     )
 
     val contentColor by animateColorAsState(
@@ -76,7 +75,6 @@ private fun ThemeToggleButton(
             MaterialTheme.colorScheme.onSurfaceVariant
         },
         animationSpec = tween(durationMillis = 300),
-        label = "ContentColorAnimation"
     )
 
     Box(

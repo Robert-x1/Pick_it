@@ -1,7 +1,10 @@
 package com.hitech.pickit.movie.data.repository
 
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.hitech.pickit.movie.data.data_source.local.LocalDataSource
 import com.hitech.pickit.movie.domain.repository.ProfileRepository
+import com.hitech.pickit.movie.domain.util.AppLanguage
 import com.hitech.pickit.movie.domain.util.AppTheme
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -14,5 +17,16 @@ class ProfileRepositoryImpl @Inject constructor(
 
     override suspend fun saveThemePreference(theme: AppTheme) {
         localDataSource.saveThemePreference(theme)
+    }
+
+    override fun getCurrentLanguage(): AppLanguage {
+        val currentLocale = AppCompatDelegate.getApplicationLocales().get(0)
+        val code = currentLocale?.language ?: "en"
+        return AppLanguage.getByCode(code)
+    }
+
+    override suspend fun setLanguage(language: AppLanguage) {
+        val appLocale = LocaleListCompat.forLanguageTags(language.code)
+        AppCompatDelegate.setApplicationLocales(appLocale)
     }
 }

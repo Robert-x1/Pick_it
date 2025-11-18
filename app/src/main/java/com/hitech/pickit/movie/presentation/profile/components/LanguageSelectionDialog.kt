@@ -8,22 +8,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
-import com.hitech.pickit.movie.domain.util.Language
+import com.hitech.pickit.movie.domain.util.AppLanguage
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
 fun LanguageDialog(
     openDialog: Boolean,
-    currentLanguage: Language,
-    onLanguageSelected: (Language) -> Unit,
+    currentAppLanguage: AppLanguage,
+    onLanguageSelected: (AppLanguage) -> Unit,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val languages = Language.entries.toTypedArray()
+    val appLanguages = AppLanguage.entries.toTypedArray()
 
     if(openDialog) {
         AlertDialog(
@@ -31,7 +32,9 @@ fun LanguageDialog(
             confirmButton = { },
             dismissButton = {
                 TextButton(onClick = onDismiss) {
-                    Text("Cancel")
+                    Text(
+                        text = stringResource(R.string.cancel)
+                    )
                 }
             },
             icon = {
@@ -42,14 +45,16 @@ fun LanguageDialog(
                 )
             },
             title = {
-                Text("Choose Language")
+                Text(
+                    text = stringResource(R.string.choose_language)
+                )
             },
             text = {
                 Column(Modifier.selectableGroup()) {
-                    languages.forEach { language ->
+                    appLanguages.forEach { language ->
                         LanguageRow(
-                            language = language,
-                            isSelected = (currentLanguage == language),
+                            appLanguage = language,
+                            isSelected = (currentAppLanguage == language),
                             onSelected = {
                                 onLanguageSelected(language)
                                 onDismiss()
@@ -64,7 +69,7 @@ fun LanguageDialog(
 
 @Composable
 private fun LanguageRow(
-    language: Language,
+    appLanguage: AppLanguage,
     isSelected: Boolean,
     onSelected: () -> Unit,
     modifier: Modifier = Modifier
@@ -89,7 +94,7 @@ private fun LanguageRow(
                 .width(16.dp)
         )
         Text(
-            text = language.displayName,
+            text = appLanguage.displayName,
             style = MaterialTheme.typography.bodyLarge
         )
     }
@@ -100,7 +105,7 @@ private fun LanguageRow(
 fun LanguageDialogPreview() {
     PickItTheme {
         LanguageDialog(
-            currentLanguage = Language.ENGLISH,
+            currentAppLanguage = AppLanguage.ENGLISH,
             onLanguageSelected = {},
             onDismiss = {},
             openDialog = true

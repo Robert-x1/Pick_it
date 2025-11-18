@@ -1,7 +1,8 @@
+
 <resources>
     <string name="app_name">Pick it</string>
-    <!--OnBoarding-->
 
+    <!--OnBoarding-->
     <string name="welcome">Welcome</string>
     <string name="welcome_to_pick_it">Welcome to PickIt !</string>
     <string name="movie_picked_for_you">Movies picked just for you!</string>
@@ -9,6 +10,7 @@
     <string name="stay_updated_with_the_newest_releases">Stay updated\n with the newest releases!</string>
     <string name="book_your_ticket_with_ease">Book your ticket with ease...choose your cinema, time, and preferred seat with just one tap</string>
     <string name="do_not_miss_any_new_movie">Don’t miss any new movie!\n Stay updated with the latest releases and offers instantly.</string>
+
     <!--Networking-->
     <string name="error_request_timeout">Time Out !</string>
     <string name="too_many_requests">Too Many Requests !</string>
@@ -16,12 +18,14 @@
     <string name="unknow_error">Something went Wrong! Please Try Again Later .</string>
     <string name="serialization_error">can not do serialization!</string>
     <string name="server_error">A server error occurred. Please try again later.</string>
+
     <!--screens-->
     <string name="recent_searches">Recent searches</string>
     <string name="genres">Genres</string>
     <string name="languages">Languages</string>
     <string name="search">Search</string>
     <string name="view_more">View more</string>
+
     <!--Locations-->
     <string name="location_cairo">Cairo</string>
     <string name="location_giza">Giza</string>
@@ -50,6 +54,7 @@
     <string name="location_red_sea">Red Sea</string>
     <string name="location_new_valley">New Valley</string>
     <string name="location_matrouh">Matrouh</string>
+
     <!--Cinema Robert NOT AI-->
     <string name="cinema_vox_mall_of_egypt">VOX Cinemas – Mall of Egypt</string>
     <string name="cinema_vox_almaza">VOX Cinemas – City Centre Almaza</string>
@@ -67,6 +72,7 @@
     <string name="cinema_cinemax_mansoura">CineMax – Mansoura</string>
     <string name="cinema_royal_tanta">Royal Cinema – Tanta</string>
     <string name="book_set">BOOK A SET</string>
+
     <!--Categories-->
     <string name="cat_action">Action</string>
     <string name="cat_adventure">Adventure</string>
@@ -99,4 +105,14 @@
     <string name="text_airing_today">Airing today</string>
     <string name="text_on_the_air">On the air</string>
 
+    <!--profile screen-->
+    <string name="Notifications">Notifications</string>
+    <string name="Language">Language</string>
+
+    <!--language selection dialog-->
+    <string name="cancel">Cancel</string>
+    <string name="choose_language">Choose Language</string>
+    <string name="profile">Profile</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="light_mode">Light Mode</string>
 </resources>
