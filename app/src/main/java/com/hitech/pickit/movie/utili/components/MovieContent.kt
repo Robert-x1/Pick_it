@@ -38,26 +38,24 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.hitech.pickit.movie.presentation.models.MovieUi
-import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
+import com.hitech.pickit.movie.presentation.models.TMDbItem
 import com.hitech.pickit.movie.utili.Spacing
 import com.hitech.pickit.movie.utili.components.rate.movieItemRate
 
 @Composable
 fun TMDbContent(
-    movieItem: MovieUi,
-    onClick: (MovieUi) -> Unit,
+    movieItem: TMDbItem,
+    onClick: (TMDbItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = modifier) {
         movieItemRate(
-            rate = movieItem.rate.value,
+            rate = movieItem.voteAverage,
             modifier =
                 Modifier
                     .align(Alignment.TopCenter)
@@ -74,7 +72,7 @@ fun TMDbContent(
             onClick = { onClick.invoke(movieItem) },
         ) {
             Box {
-                movieItemPoster(movieItem.picture, movieItem.name)
+                movieItemPoster(movieItem.posterUrl, movieItem.name)
                 movieItemInfo(
                     movieItem,
                     modifier =
@@ -132,7 +130,7 @@ fun BoxScope.movieItemPoster(posterUrl: String?, movieItemName: String) {
 }
 
 @Composable
-fun movieItemInfo(movieItem: MovieUi, modifier: Modifier = Modifier) {
+fun movieItemInfo(movieItem: TMDbItem, modifier: Modifier = Modifier) {
     Column(
         verticalArrangement = Arrangement.spacedBy(Spacing.small_4),
         modifier =
@@ -191,17 +189,3 @@ fun TMDbItemFeature(icon: ImageVector, field: String) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun TMDbCardPreview() {
-    MaterialTheme {
-        Box(modifier = Modifier
-            .padding(16.dp)
-            .size(width = 150.dp, height = 220.dp)) {
-            TMDbContent(
-                movieItem = MoviePreview,
-                onClick = {}
-            )
-        }
-    }
-}

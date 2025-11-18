@@ -22,7 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
-import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
+import com.hitech.pickit.movie.presentation.BOOK_list.components.MoviePreview
 import com.hitech.pickit.movie.utili.MovieState
 
 @Composable
@@ -38,7 +38,7 @@ fun MoviesLazyRow(
             contentAlignment = Alignment.Center
         ) {
             //shimmer
-            LoadingIndicator()
+            LoadingIndicator(modifier = Modifier.fillMaxSize(),color = MaterialTheme.colorScheme.primaryContainer)
         }
     } else {
 
@@ -82,7 +82,7 @@ private fun MoviesLazyRowPreview() {
     MoviesLazyRow(
         state = MovieState(
             isLoading = false,
-            movies = (1..10).map { MoviePreview.copy(id = it.toString()) },
+            movies = (1..10).map { MoviePreview.copy(id = it) },
         )
     )
 }

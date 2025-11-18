@@ -6,10 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,11 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.hitech.pickit.movie.presentation.movieFeedScreen.MovieListRoute
-import com.hitech.pickit.movie.presentation.onBoardingScreen.MainOnboardingFlow
-import com.hitech.pickit.movie.presentation.onBoardingScreen.components.FirstOnBoardingScreen
-import com.hitech.pickit.movie.presentation.onBoardingScreen.components.SecondOnBoardingScreen
-import com.hitech.pickit.movie.presentation.onBoardingScreen.components.ThirdOnBoardingScreen
+import com.hitech.pickit.ui.PickItApp
 import com.hitech.pickit.ui.theme.OnboardingScreen
 import com.hitech.pickit.ui.theme.PickItTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +31,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PickItTheme {
-                MainOnboardingFlow(onFinish = {})
+                PickItApp()
+
+//                MainOnboardingFlow(onFinish = {})
+
 //                Scaffold(
 //                    Modifier.fillMaxSize(),
 //                    containerColor = MaterialTheme.colorScheme.surface
@@ -69,7 +66,7 @@ fun MyApp() {
         SplashScreen()
     } else {
         OnboardingScreen(onFinish = {
-           // h3mel intent yro7 3la elhome
+            // h3mel intent yro7 3la elhome
         })
     }
 }

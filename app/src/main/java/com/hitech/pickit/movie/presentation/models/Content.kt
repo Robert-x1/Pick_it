@@ -3,6 +3,7 @@ package com.hitech.pickit.movie.presentation.models
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
@@ -18,7 +19,7 @@ fun <T> Content(viewModel: BaseViewModel<T>, successScreen: @Composable (T) -> U
 
     when (val state = viewModel.stateFlow.collectAsState().value) {
 
-        is UiState.Loading -> LoadingIndicator()
+        is UiState.Loading -> LoadingIndicator(modifier = Modifier.fillMaxSize(),color = MaterialTheme.colorScheme.primaryContainer)
 
         is UiState.Success -> successScreen(state.data)
 

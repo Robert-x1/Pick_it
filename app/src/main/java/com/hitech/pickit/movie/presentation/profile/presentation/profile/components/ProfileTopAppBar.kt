@@ -19,7 +19,7 @@ fun ProfileTopAppBar(modifier: Modifier = Modifier) {
         title = {
             Text(
                 text = "Profile",
-                color = MaterialTheme.colorScheme.onPrimary,
+                color = MaterialTheme.colorScheme.primaryContainer,
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold
             )

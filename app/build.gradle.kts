@@ -83,6 +83,7 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation("androidx.compose.runtime:runtime:1.6.7")
     implementation("androidx.compose.ui:ui-tooling")
     implementation("androidx.compose.material3:material3:1.5.0-alpha08")
 
@@ -117,13 +118,20 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
-
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("androidx.paging:paging-runtime-ktx:3.3.6")
     implementation("androidx.paging:paging-compose:3.3.6")
     // Room
-
     implementation("androidx.room:room-runtime:2.7.2")
     annotationProcessor("androidx.room:room-compiler:2.7.2")
     ksp("androidx.room:room-compiler:2.7.2")
     implementation("androidx.room:room-ktx:2.7.2")
+    //browser
+    implementation("androidx.browser:browser:1.8.0")
+    //Palette
+    implementation("androidx.palette:palette-ktx:1.0.0")
+
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    implementation("com.airbnb.android:lottie-compose:6.4.0")
 }

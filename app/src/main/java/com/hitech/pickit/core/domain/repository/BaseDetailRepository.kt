@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
+
 abstract class BaseDetailRepository<T : TMDbItemDetails>(ioDispatcher: CoroutineDispatcher) :
     BaseRepository<DetailWrapper>(ioDispatcher) {
 

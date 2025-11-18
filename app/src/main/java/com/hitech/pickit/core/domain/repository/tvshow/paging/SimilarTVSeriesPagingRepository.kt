@@ -16,5 +16,8 @@ class SimilarTVSeriesPagingRepository @Inject constructor(
     private val tvShowApi: TVShowService,
 ) : BasePagingRepository<TVShow>() {
     override fun pagingSource(query: String?, id: Int?): BasePagingSource<TVShow> =
-        SimilarTVSeriesPagingSource(context, tvShowApi, id!!)
+        SimilarTVSeriesPagingSource(
+            context,
+            tvShowApi,
+            requireNotNull(id) { "Similar TV Shows requires an ID" })
 }

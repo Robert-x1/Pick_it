@@ -16,5 +16,8 @@ class SimilarMoviesPagingRepository @Inject constructor(
     private val movieApi: MovieService,
 ) : BasePagingRepository<Movie>() {
     override fun pagingSource(query: String?, id: Int?): BasePagingSource<Movie> =
-        SimilarMoviesPagingSource(context, movieApi, id!!)
+        SimilarMoviesPagingSource(
+            context,
+            movieApi,
+            requireNotNull(id) { "Similar Movies requires an ID" })
 }

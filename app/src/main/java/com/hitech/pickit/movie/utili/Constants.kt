@@ -17,4 +17,6 @@ object Constants {
     const val GENRE_IDS = "genre_ids"
     const val VOTE_AVERAGE = "vote_average"
     const val VOTE_COUNT = "vote_count"
+
+    const val ONBOARDING_ROUTE = "onboarding"
 }

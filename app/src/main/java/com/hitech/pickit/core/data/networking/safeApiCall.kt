@@ -12,7 +12,7 @@ import kotlin.coroutines.coroutineContext
 
 suspend inline fun <T> safeApiCall(
     crossinline execute: suspend () -> T
-):Result<T, NetworkError> {
+): Result<T, NetworkError> {
     return try {
         coroutineContext.ensureActive()
         val response = execute()
@@ -26,10 +26,10 @@ suspend inline fun <T> safeApiCall(
             else -> Result.Error(NetworkError.UNKNOW)
         }
     } catch (e: IOException) {
-
         coroutineContext.ensureActive()
         Result.Error(NetworkError.NO_INTERNET)
     } catch (e: SerializationException) {
+        Log.e("SERIALIZATION_ERROR", "JSON Parsing Failed: ${e.message}", e)
 
         coroutineContext.ensureActive()
         Result.Error(NetworkError.SERIALIZATION)

@@ -3,8 +3,6 @@ package com.hitech.pickit.movie.utili
 import androidx.compose.ui.unit.dp
 
 object Spacing {
-    // base spacing
-
     val none_0 = 0.dp
     val extraSmall_2 = 2.dp
     val small_4 = 4.dp

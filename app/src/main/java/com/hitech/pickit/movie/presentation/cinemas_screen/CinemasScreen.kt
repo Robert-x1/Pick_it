@@ -1,6 +1,5 @@
 package com.hitech.pickit.movie.presentation.cinemas_screen
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -22,7 +21,7 @@ import com.hitech.pickit.R
 import com.hitech.pickit.movie.presentation.cinemas_screen.components.CinemaSelectorUI
 import com.hitech.pickit.movie.presentation.cinemas_screen.components.MoviesLazyRow
 import com.hitech.pickit.movie.presentation.cinemas_screen.components.WeekCalendarRow
-import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
+import com.hitech.pickit.movie.presentation.BOOK_list.components.MoviePreview
 import com.hitech.pickit.movie.utili.MovieState
 import com.hitech.pickit.ui.theme.PickItTheme
 
@@ -41,7 +40,7 @@ fun CinemasScreen(modifier: Modifier = Modifier) {
         MoviesLazyRow(
             state = MovieState(
                 isLoading = false,
-                movies = (1..10).map { MoviePreview.copy(id = it.toString()) },
+                movies = (1..10).map { MoviePreview.copy(id = it) },
             )
         )
         Spacer(modifier = Modifier.height(16.dp))

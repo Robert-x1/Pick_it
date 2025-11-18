@@ -1,20 +1,18 @@
 package com.hitech.pickit.core.domain.repository.tvshow
 
-import android.content.Context
 import com.hitech.pickit.R
 import com.hitech.pickit.core.domain.repository.BaseFeedRepository
 import com.hitech.pickit.di.IoDispatcher
 import com.hitech.pickit.movie.data.networking.dto.asTVShowDomainModel
 import com.hitech.pickit.movie.data.remote.TVShowService
 import com.hitech.pickit.movie.domain.model.TVShow
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineDispatcher
 
 @Singleton
 class TVShowFeedRepository @Inject constructor(
-    @ApplicationContext context: Context,
+    //@ApplicationContext context: Context,
     @IoDispatcher ioDispatcher: CoroutineDispatcher,
     private val tvShowApi: TVShowService,
 ) : BaseFeedRepository<TVShow>(ioDispatcher) {

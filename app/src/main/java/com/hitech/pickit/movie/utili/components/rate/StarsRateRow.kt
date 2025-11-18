@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.hitech.pickit.R
 import com.hitech.pickit.movie.presentation.models.DisplayableNumber
-import com.hitech.pickit.movie.presentation.movie_fav_list.components.MoviePreview
+import com.hitech.pickit.movie.presentation.BOOK_list.components.MoviePreview
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
