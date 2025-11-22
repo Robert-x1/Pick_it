@@ -99,7 +99,7 @@ import com.hitech.pickit.movie.presentation.paging.search.SearchMoviesScreen
 import com.hitech.pickit.movie.presentation.paging.search.SearchMoviesViewModel
 import com.hitech.pickit.movie.presentation.paging.search.SearchTVSeriesScreen
 import com.hitech.pickit.movie.presentation.paging.search.SearchTVSeriesViewModel
-import com.hitech.pickit.movie.presentation.profile.presentation.profile.NewProfileScreen
+import com.hitech.pickit.movie.presentation.profile.ProfileScreen
 import com.hitech.pickit.movie.utili.Constants.ONBOARDING_ROUTE
 import com.hitech.pickit.movie.utili.MainDestinations
 
@@ -282,7 +282,7 @@ private fun NavGraphBuilder.navigationScreens(navController: NavController) {
 
 
         composable(route = HomeSections.SETTING_SECTION.route) {
-            NewProfileScreen()
+            ProfileScreen()
         }
     }
 }

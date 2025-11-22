@@ -1,5 +1,7 @@
-package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.components
 
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -10,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.hitech.pickit.R
@@ -28,17 +31,16 @@ fun ThemeMenuItem(
             .padding(horizontal = 24.dp, vertical = 16.dp)
     ) {
         ThemeToggleButton(
-            text = "Dark Mode",
+            text = stringResource(R.string.dark_mode),
             icon = R.drawable.dark_mode_icon,
             isSelected = currentTheme == AppTheme.DARK,
             onClick = { onThemeChange(AppTheme.DARK) },
             modifier = Modifier.weight(1f)
         )
-
         Spacer(modifier = Modifier.width(4.dp))
 
         ThemeToggleButton(
-            text = "Light Mode",
+            text = stringResource(R.string.light_mode),
             icon = R.drawable.light_mode_icon,
             isSelected = currentTheme == AppTheme.LIGHT,
             onClick = { onThemeChange(AppTheme.LIGHT) },
@@ -46,7 +48,6 @@ fun ThemeMenuItem(
         )
     }
 }
-
 @Composable
 private fun ThemeToggleButton(
     text: String,
@@ -55,17 +56,24 @@ private fun ThemeToggleButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val backgroundColor = if (isSelected) {
-        MaterialTheme.colorScheme.primary
-    } else {
-        MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-    }
 
-    val contentColor = if (isSelected) {
-        MaterialTheme.colorScheme.onPrimary
-    } else {
-        MaterialTheme.colorScheme.onSurfaceVariant
-    }
+    val backgroundColor by animateColorAsState(
+        targetValue = if (isSelected) {
+            MaterialTheme.colorScheme.primary
+        } else {
+            MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
+        },
+        animationSpec = tween(durationMillis = 300),
+    )
+
+    val contentColor by animateColorAsState(
+        targetValue = if (isSelected) {
+            MaterialTheme.colorScheme.onPrimary
+        } else {
+            MaterialTheme.colorScheme.onSurfaceVariant
+        },
+        animationSpec = tween(durationMillis = 300),
+    )
 
     Box(
         contentAlignment = Alignment.Center,
@@ -94,13 +102,11 @@ private fun ThemeToggleButton(
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun ThemeSwitcherPreview() {
     PickItTheme {
         var currentTheme by remember { mutableStateOf(AppTheme.DARK) }
-
         Box(
             modifier = Modifier
                 .fillMaxSize(),

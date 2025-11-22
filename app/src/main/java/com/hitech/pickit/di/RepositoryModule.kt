@@ -7,6 +7,8 @@ import com.hitech.pickit.core.domain.repository.PersonRepository
 import com.hitech.pickit.core.domain.repository.movie.MovieFeedRepository
 import com.hitech.pickit.core.domain.repository.movie.detail.BookmarkMovieDetailsRepositoryImpl
 import com.hitech.pickit.core.domain.repository.movie.detail.MovieDetailRepository
+import com.hitech.pickit.core.domain.repository.profile.ProfileRepository
+import com.hitech.pickit.core.domain.repository.profile.ProfileRepositoryImpl
 import com.hitech.pickit.core.domain.repository.tvshow.TVShowFeedRepository
 import com.hitech.pickit.core.domain.repository.tvshow.detail.BookmarkTVShowDetailsRepositoryImpl
 import com.hitech.pickit.core.domain.repository.tvshow.detail.TVShowDetailRepository
@@ -68,5 +70,11 @@ abstract class RepositoryBindsModule {
     abstract fun bindTVShowFeedRepository(
         impl: TVShowFeedRepository
     ): BaseFeedRepository<TVShow>
+
+    @Binds
+    @Singleton
+    abstract fun bindProfileRepository(
+        impl: ProfileRepositoryImpl
+    ): ProfileRepository
 
 }

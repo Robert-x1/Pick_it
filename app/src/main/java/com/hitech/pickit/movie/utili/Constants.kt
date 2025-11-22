@@ -2,6 +2,8 @@ package com.hitech.pickit.movie.utili
 
 object Constants {
 
+    const val PREFERENCES_NAME = "user_preferences"
+    const val PREFERENCES_THEME_KEY = "theme_key"
     const val BASE_WIDTH_342_PATH = "https://image.tmdb.org/t/p/w342"
     const val BASE_WIDTH_780_PATH = "https://image.tmdb.org/t/p/w780"
     const val BASE_WIDTH_500_PATH = "https://image.tmdb.org/t/p/w500"

@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
