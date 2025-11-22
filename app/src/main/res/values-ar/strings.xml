@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pick it</string>
-
+    <string name="welcome">مرحباً</string>
     <string name="error_request_timeout">انتهى الوقت! يرجى المحاولة مرة أخرى.</string>
     <string name="too_many_requests">طلبات كثيرة جدًا! حاول مرة أخرى لاحقًا.</string>
     <string name="no_internet">لا يوجد اتصال بالإنترنت.\nيرجى التحقق من اتصالك والمحاولة مرة أخرى!</string>
@@ -9,7 +9,6 @@
     <string name="serialization_error">حدث خطأ تقني. يرجى المحاولة لاحقًا.</string>
     <string name="server_error">حدث خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقًا.</string>
 
-    <string name="welcome">مرحبًا</string>
     <string name="welcome_to_pick_it">أهلاً بك في PickIt!</string>
     <string name="movie_picked_for_you">أفلام تم اختيارها خصيصًا لك!</string>
     <string name="your_seat_in_seconds">مقعدك في ثوانٍ!</string>
@@ -140,5 +139,15 @@
     <string name="movie">فيلم</string>
     <string name="tv_show">مسلسل</string>
     <string name="setting">الإعدادات</string>
+    <!--profile screen-->
+    <string name="Notifications">الاشعارات</string>
+    <string name="Language">اللغة</string>
+
+    <!--language selection dialog-->
+    <string name="cancel">إلغاء</string>
+    <string name="choose_language">اختر اللغة</string>
+    <string name="profile">الملف الشخصي</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="light_mode">الوضع الفاتح</string>
 
 </resources>

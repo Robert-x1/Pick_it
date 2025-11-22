@@ -1,4 +1,4 @@
-package com.hitech.pickit.movie.presentation.profile.presentation.profile.components
+package com.hitech.pickit.movie.presentation.profile.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -29,11 +29,12 @@ fun LanguageProfileMenuItem(
     icon: Int,
     text: String,
     selectedLanguage: String? = null,
+    onClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { /* Navigate to the corresponding screen */ }
+            .clickable { onClick() }
             .padding(horizontal = 24.dp, vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -51,28 +52,23 @@ fun LanguageProfileMenuItem(
                 modifier = Modifier.size(20.dp),
             )
         }
-
         Spacer(modifier = Modifier.width(16.dp))
-
         Text(
             text = text,
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Medium,
             color = MaterialTheme.colorScheme.onSurface
         )
-
         Spacer(modifier = Modifier.weight(1f))
-
         if (selectedLanguage != null) {
             Text(
                 text = selectedLanguage,
                 style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.Light
+                fontWeight = FontWeight.Light,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
-
         Spacer(modifier = Modifier.width(16.dp))
-
         Box(
             modifier = Modifier
 //                .size(48.dp),
@@ -86,7 +82,6 @@ fun LanguageProfileMenuItem(
         }
     }
 }
-
 @Composable
 @Preview(showBackground = true)
 fun LanguageProfileMenuItemPreview() {
@@ -94,7 +89,8 @@ fun LanguageProfileMenuItemPreview() {
         LanguageProfileMenuItem(
             icon = R.drawable.language_icon,
             text = "Language",
-            selectedLanguage = "English (US)"
+            selectedLanguage = "English (US)",
+            onClick = {}
         )
     }
 }
