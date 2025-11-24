@@ -37,10 +37,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -50,6 +52,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.navArgument
 import com.hitech.pickit.R
+import com.hitech.pickit.auth.presentation.SignInScreen
+import com.hitech.pickit.auth.presentation.SignInViewModel
 import com.hitech.pickit.movie.presentation.BOOK_list.BookmarkViewModel
 import com.hitech.pickit.movie.presentation.BOOK_list.UnifiedFavListScreen
 import com.hitech.pickit.movie.presentation.credit.CastScreen
@@ -102,6 +106,8 @@ import com.hitech.pickit.movie.presentation.paging.search.SearchTVSeriesViewMode
 import com.hitech.pickit.movie.presentation.profile.ProfileScreen
 import com.hitech.pickit.movie.utili.Constants.ONBOARDING_ROUTE
 import com.hitech.pickit.movie.utili.MainDestinations
+import com.hitech.pickit.movie.utili.MainDestinations.HOME_ROUTE
+import com.hitech.pickit.movie.utili.MainDestinations.SIGNIN_ROUTE
 
 @Composable
 fun PickItApp(
@@ -146,6 +152,8 @@ fun PickItApp(
 
             moviePagingScreens(appState.navController)
             tvShowPagingScreens(appState.navController)
+
+            signInScreen(navController = appState.navController)
         }
     }
 }
@@ -199,7 +207,7 @@ fun TMDbBottomBar(
 
 private fun NavGraphBuilder.navigationScreens(navController: NavController) {
     navigation(
-        route = MainDestinations.HOME_ROUTE,
+        route = HOME_ROUTE,
         startDestination = HomeSections.MOVIE_SECTION.route,
     ) {
         composable(route = HomeSections.MOVIE_SECTION.route) {
@@ -282,7 +290,13 @@ private fun NavGraphBuilder.navigationScreens(navController: NavController) {
 
 
         composable(route = HomeSections.SETTING_SECTION.route) {
-            ProfileScreen()
+            ProfileScreen(
+                onSignActionClick = {
+                    navController.navigate(SIGNIN_ROUTE) {
+                        popUpTo(HOME_ROUTE) { inclusive = true }
+                    }
+                }
+            )
         }
     }
 }
@@ -507,8 +521,38 @@ private fun NavGraphBuilder.onboardingScreen(
             onFinish = {
                 viewModel.saveOnBoardingState(completed = true)
 
-                navController.navigate(MainDestinations.HOME_ROUTE) {
+                navController.navigate(HOME_ROUTE) {
                     popUpTo(ONBOARDING_ROUTE) { inclusive = true }
+                }
+            }
+        )
+    }
+}
+
+private fun NavGraphBuilder.signInScreen(
+    navController: NavController,
+) {
+    composable(route = SIGNIN_ROUTE) {
+        val viewModel = hiltViewModel<SignInViewModel>()
+        val state by viewModel.state.collectAsStateWithLifecycle()
+        val context = LocalContext.current
+
+        LaunchedEffect(key1 = state.isSignInSuccessful) {
+            if (state.isSignInSuccessful) {
+                navController.navigate(HOME_ROUTE) {
+                    popUpTo(SIGNIN_ROUTE) { inclusive = true }
+                }
+            }
+        }
+
+        SignInScreen(
+            state = state,
+            onGoogleSignInClick = {
+                viewModel.signInWithGoogle(context)
+            },
+            onGuestClick = {
+                navController.navigate(HOME_ROUTE) {
+                    popUpTo(SIGNIN_ROUTE) { inclusive = true }
                 }
             }
         )

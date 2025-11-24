@@ -1,6 +1,9 @@
 package com.hitech.pickit.movie.presentation.profile.viewmodel
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.hitech.pickit.auth.domain.model.UserData
+import com.hitech.pickit.auth.domain.repository.AuthRepository
 import com.hitech.pickit.movie.domain.use_case.GetLanguageUseCase
 import com.hitech.pickit.movie.domain.use_case.SetLanguageUseCase
 import com.hitech.pickit.movie.domain.use_case.theme.GetAppThemeUseCase
@@ -21,9 +24,29 @@ class ProfileViewModel @Inject constructor(
     private val getAppThemeUseCase: GetAppThemeUseCase,
     private val setAppThemeUseCase: SetAppThemeUseCase,
     private val getLanguageUseCase: GetLanguageUseCase,
-    private val setLanguageUseCase: SetLanguageUseCase
+    private val setLanguageUseCase: SetLanguageUseCase,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
+    // User's info Block
+    private val _user = MutableStateFlow<UserData?>(null)
+    val user = _user.asStateFlow()
+
+    init {
+        loadUserProfile()
+    }
+
+    private fun loadUserProfile() {
+        _user.value = authRepository.getSignedInUser()
+    }
+
+    fun signOut(context: Context) {
+        viewModelScope.launch {
+            authRepository.signOut(context)
+        }
+    }
+
+    // theme block
     val theme: StateFlow<AppTheme> = getAppThemeUseCase()
         .stateIn(
             scope = viewModelScope,
@@ -37,6 +60,7 @@ class ProfileViewModel @Inject constructor(
         }
     }
 
+    // Language Block
     private val _currentLanguage = MutableStateFlow(getLanguageUseCase())
     val currentLanguage: StateFlow<AppLanguage> = _currentLanguage.asStateFlow()
 

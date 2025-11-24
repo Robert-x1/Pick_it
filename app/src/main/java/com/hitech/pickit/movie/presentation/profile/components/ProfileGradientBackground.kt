@@ -11,27 +11,48 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.hitech.pickit.R
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
-fun ProfileScreenGradient(modifier: Modifier = Modifier) {
+fun ProfileScreenGradient(
+    modifier: Modifier = Modifier,
+    imageUrl: String?
+) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface),
         contentAlignment = Alignment.Center
     ) {
-        Image(
-            modifier = Modifier
-                .fillMaxSize(),
-            painter = painterResource(R.drawable.joker),
-            contentDescription = "",
-            contentScale = ContentScale.Crop,
-            alignment = Alignment.TopCenter
-        )
+        if (imageUrl != null) {
+            AsyncImage(
+                model = ImageRequest.Builder(context)
+                    .data(imageUrl)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                alignment = Alignment.TopCenter,
+                modifier = Modifier.fillMaxSize()
+            )
+        } else {
+            // 2. Else, fallback to local Joker resource
+            Image(
+                modifier = Modifier.fillMaxSize(),
+                painter = painterResource(R.drawable.default_user_img),
+                contentDescription = "",
+                contentScale = ContentScale.Crop,
+                alignment = Alignment.TopCenter
+            )
+        }
         Box(
             modifier = Modifier
                 .matchParentSize()
@@ -53,6 +74,8 @@ fun ProfileScreenGradient(modifier: Modifier = Modifier) {
 @Composable
 private fun ProfileScreenGradientPreview() {
     PickItTheme {
-        ProfileScreenGradient()
+        ProfileScreenGradient(
+            imageUrl = null
+        )
     }
 }

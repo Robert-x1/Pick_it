@@ -142,6 +142,10 @@
     <!--profile screen-->
     <string name="Notifications">الاشعارات</string>
     <string name="Language">اللغة</string>
+    <string name="guest_user">زائر</string>
+    <string name="sign_in_sync_msg">سجل الدخول لمزامنة بياناتك</string>
+    <string name="sign_in">تسجيل الدخول</string>
+    <string name="sign_out">تسجيل الخروج</string>
 
     <!--language selection dialog-->
     <string name="cancel">إلغاء</string>
@@ -149,5 +153,4 @@
     <string name="profile">الملف الشخصي</string>
     <string name="dark_mode">الوضع الداكن</string>
     <string name="light_mode">الوضع الفاتح</string>
-
 </resources>

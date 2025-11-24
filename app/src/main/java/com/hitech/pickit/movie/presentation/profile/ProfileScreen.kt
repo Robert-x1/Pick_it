@@ -4,6 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Login
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -14,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,6 +31,7 @@ import com.hitech.pickit.movie.presentation.profile.components.LanguageProfileMe
 import com.hitech.pickit.movie.presentation.profile.components.ProfileHeader
 import com.hitech.pickit.movie.presentation.profile.components.ProfileScreenGradient
 import com.hitech.pickit.movie.presentation.profile.components.ProfileTopAppBar
+import com.hitech.pickit.movie.presentation.profile.components.SignActionButton
 import com.hitech.pickit.movie.presentation.profile.components.ThemeMenuItem
 import com.hitech.pickit.movie.presentation.profile.components.ToggleMenuItem
 import com.hitech.pickit.movie.presentation.profile.viewmodel.ProfileViewModel
@@ -32,8 +39,13 @@ import com.hitech.pickit.ui.theme.PickItTheme
 @Composable
 fun ProfileScreen(
     modifier: Modifier = Modifier,
-    viewModel: ProfileViewModel = hiltViewModel()
+    viewModel: ProfileViewModel = hiltViewModel(),
+    onSignActionClick: () -> Unit
 ) {
+    val context = LocalContext.current
+
+    val user by viewModel.user.collectAsStateWithLifecycle()
+
     val currentTheme by viewModel.theme.collectAsStateWithLifecycle()
     val currentLanguage by viewModel.currentLanguage.collectAsStateWithLifecycle()
 
@@ -45,7 +57,10 @@ fun ProfileScreen(
         modifier = modifier
             .fillMaxSize()
     ) {
-        ProfileScreenGradient()
+        ProfileScreenGradient(
+            imageUrl = user?.profilePictureUrl
+        )
+
         Scaffold(
             containerColor = Color.Transparent,
             topBar = {
@@ -55,14 +70,16 @@ fun ProfileScreen(
                 Column(
                     modifier = Modifier
                         .padding(innerPadding)
-                        .fillMaxSize(),
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     ProfileHeader(
-                        avatarResId = R.drawable.joker,
-                        name = "Sherif",
-                        email = "Sherif@gmail.com",
+                        imageUrl = user?.profilePictureUrl,
+                        name = user?.username ?: stringResource(R.string.guest_user),
+                        email = user?.email ?: stringResource(R.string.sign_in_sync_msg),
                     )
+
                     Spacer(modifier = Modifier.padding(10.dp))
 
                     ToggleMenuItem(
@@ -83,15 +100,36 @@ fun ProfileScreen(
                         currentTheme = currentTheme,
                         onThemeChange = { viewModel.setTheme(it) } ,
                     )
+
                     HorizontalDivider(
                         modifier = Modifier
                             .padding(horizontal = 24.dp, vertical = 5.dp),
                     )
 
-//                    LanguageProfileMenuItem(
-//                        icon = R.drawable.favorite_icon,
-//                        text = "Favourites"
-//                    )
+                    if (user != null) {
+                        // user is logged in with an account
+                        SignActionButton(
+                            icon = Icons.AutoMirrored.Filled.Logout,
+                            text = stringResource(R.string.sign_out),
+                            isDestructive = true,
+                            onClick = {
+                                viewModel.signOut(context)
+                                // Navigate to the sing in screen
+                                onSignActionClick()
+                            }
+                        )
+                    } else {
+                        // user is in guest mode
+                        SignActionButton(
+                            icon = Icons.AutoMirrored.Filled.Login,
+                            text = stringResource(R.string.sign_in),
+                            isDestructive = false,
+                            onClick = {
+                                // Navigate to the sing in screen
+                                onSignActionClick()
+                            }
+                        )
+                    }
                 }
             }
         )
@@ -105,13 +143,5 @@ fun ProfileScreen(
             },
             onDismiss = { showLanguageDialog = false }
         )
-    }
-}
-
-@Preview
-@Composable
-private fun NewProfileScreenPreview() {
-    PickItTheme {
-        ProfileScreen()
     }
 }
