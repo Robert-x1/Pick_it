@@ -22,6 +22,10 @@
     <string name="languages">Languages</string>
     <string name="view_more">View more</string>
     <string name="book_set">BOOK A SET</string>
+    <string name="no_favorite_movies">No Favorite movies</string>
+    <string name="no_favorite_tv_shows">No Favorite TV Shows</string>
+
+
 
     <string name="location_cairo">Cairo</string>
     <string name="location_giza">Giza</string>

@@ -111,6 +111,7 @@ fun PickItApp(
     val isLoading by viewModel.isLoading.collectAsState()
     val startDestination by viewModel.startDestination.collectAsState()
     Scaffold(
+        containerColor = MaterialTheme.colorScheme.surface,
         bottomBar = {
             if (appState.shouldShowBottomBar) {
                 TMDbBottomBar(
@@ -234,7 +235,7 @@ private fun NavGraphBuilder.navigationScreens(navController: NavController) {
                         .padding(top = 16.dp),
                     selectedTabIndex = selectedTab,
                     containerColor = MaterialTheme.colorScheme.surface,
-                    contentColor = MaterialTheme.colorScheme.primary
+                    contentColor = MaterialTheme.colorScheme.primaryContainer
                 ) {
                     tabs.forEachIndexed { index, title ->
                         Tab(
@@ -256,7 +257,9 @@ private fun NavGraphBuilder.navigationScreens(navController: NavController) {
                                 }
                             )
                         } else {
-                            EmptyScreen(message = "No Favorite Movies")
+                            EmptyScreen(
+                                message = stringResource(R.string.no_favorite_movies)
+                            )
                         }
                     }
 
@@ -272,7 +275,7 @@ private fun NavGraphBuilder.navigationScreens(navController: NavController) {
                         } else {
                             EmptyScreen(
 
-                                message = "No Favorite TV Shows",
+                                message = stringResource(R.string.no_favorite_tv_shows)
                             )
                         }
                     }

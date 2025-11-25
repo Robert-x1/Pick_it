@@ -211,15 +211,7 @@ fun TrendingItem(
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(imageUrl)
-                    .listener(
-                        onStart = { Log.d("Coil", "بدأ التحميل") },
-                        onError = { request, result ->
-                            Log.e("Coil", "فشل التحميل: ${result.throwable.message}")
-                        }
-                    )
-                    .build(),
+                model = imageUrl,
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth(),
                 contentScale = ContentScale.Crop,

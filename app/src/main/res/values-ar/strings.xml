@@ -22,6 +22,9 @@
     <string name="book_set">احجز مقعدك</string>
     <string name="clear">مسح</string>
     <string name="no_data_found">لا توجد بيانات</string>
+    <string name="no_favorite_movies">لا توجدافلام مفضلة</string>
+    <string name="no_favorite_tv_shows">لا توجد مسلسلات مفضلة</string>
+
 
     <string name="location_cairo">القاهرة</string>
     <string name="location_giza">الجيزة</string>
