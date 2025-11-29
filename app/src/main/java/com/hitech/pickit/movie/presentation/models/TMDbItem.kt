@@ -11,6 +11,5 @@ interface TMDbItem  {
     val name: String
     val voteAverage: Double
     val voteCount: Int
-
     val genreIds : List<Int>
 }

@@ -1,7 +1,6 @@
 package com.hitech.pickit.auth.data.repository
 
 import android.content.Context
-import android.util.Log
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
@@ -9,11 +8,10 @@ import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.hitech.pickit.R
 import com.hitech.pickit.auth.Constants.WEB_CLIENT_ID
+import com.hitech.pickit.auth.data.mapper.toDomainModel
 import com.hitech.pickit.auth.domain.model.UserData
 import com.hitech.pickit.auth.domain.repository.AuthRepository
-import dagger.hilt.android.qualifiers.ApplicationContext
 import jakarta.inject.Inject
 import kotlinx.coroutines.tasks.await
 
@@ -23,18 +21,7 @@ class AuthRepositoryImpl @Inject constructor(
 
     override fun getSignedInUser(): UserData? {
         val currentUser = auth.currentUser
-        return currentUser?.let {
-//            // debugging the image low resolution problem
-//            val finalUrl = getHighResPhotoUrl(it.photoUrl?.toString())
-//            Log.d("PROFILE_DEBUG", "Checking Google URL: $finalUrl")
-
-            UserData(
-                userId = it.uid,
-                username = it.displayName,
-                email = it.email,
-                profilePictureUrl = getHighResPhotoUrl(it.photoUrl?.toString())
-            )
-        }
+        return currentUser?.toDomainModel()
     }
 
     override suspend fun signInWithGoogle(context: Context): Result<UserData> {
@@ -67,12 +54,7 @@ class AuthRepositoryImpl @Inject constructor(
 
                 if (user != null) {
                     Result.success(
-                        UserData(
-                            userId = user.uid,
-                            username = user.displayName,
-                            email = user.email,
-                            profilePictureUrl = getHighResPhotoUrl(user.photoUrl?.toString())
-                        )
+                        user.toDomainModel()
                     )
                 } else {
                     Result.failure(Exception("User is null"))
@@ -100,9 +82,4 @@ class AuthRepositoryImpl @Inject constructor(
             e.printStackTrace()
         }
     }
-}
-
-private fun getHighResPhotoUrl(originalUrl: String?): String? {
-    if (originalUrl == null) return null
-    return originalUrl.replace(Regex("=s\\d+(-c)?$"), "=s0")
 }

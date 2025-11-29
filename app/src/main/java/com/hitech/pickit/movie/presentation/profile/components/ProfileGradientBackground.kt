@@ -32,27 +32,18 @@ fun ProfileScreenGradient(
             .background(MaterialTheme.colorScheme.surface),
         contentAlignment = Alignment.Center
     ) {
-        if (imageUrl != null) {
-            AsyncImage(
-                model = ImageRequest.Builder(context)
-                    .data(imageUrl)
-                    .crossfade(true)
-                    .build(),
-                contentDescription = "",
-                contentScale = ContentScale.Crop,
-                alignment = Alignment.TopCenter,
-                modifier = Modifier.fillMaxSize()
-            )
-        } else {
-            // 2. Else, fallback to local Joker resource
-            Image(
-                modifier = Modifier.fillMaxSize(),
-                painter = painterResource(R.drawable.default_user_img),
-                contentDescription = "",
-                contentScale = ContentScale.Crop,
-                alignment = Alignment.TopCenter
-            )
-        }
+        AsyncImage(
+            model = ImageRequest.Builder(context)
+                .data(imageUrl ?: R.drawable.default_user_img)
+                .crossfade(true)
+                .build(),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alignment = Alignment.TopCenter,
+            modifier = Modifier.fillMaxSize()
+
+        )
+
         Box(
             modifier = Modifier
                 .matchParentSize()

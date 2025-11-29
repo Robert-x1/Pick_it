@@ -75,9 +75,7 @@ fun ProfileScreen(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     ProfileHeader(
-                        imageUrl = user?.profilePictureUrl,
-                        name = user?.username ?: stringResource(R.string.guest_user),
-                        email = user?.email ?: stringResource(R.string.sign_in_sync_msg),
+                        userData = user
                     )
 
                     Spacer(modifier = Modifier.padding(10.dp))

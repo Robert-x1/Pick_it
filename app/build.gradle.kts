@@ -160,4 +160,7 @@ dependencies {
     // --- 3. Essential Helper (Highly Recommended) ---
     // Allows you to use ".await()" on Firebase tasks instead of callbacks
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+
+    // fireStore
+    implementation("com.google.firebase:firebase-firestore")
 }
