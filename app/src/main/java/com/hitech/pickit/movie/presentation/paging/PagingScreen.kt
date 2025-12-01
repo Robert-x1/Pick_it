@@ -2,6 +2,7 @@ package com.hitech.pickit.movie.presentation.paging
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,7 +47,18 @@ fun <T : TMDbItem> PagingScreen(
 
     when (lazyTMDbItems.loadState.refresh) {
         is LoadState.Loading -> {
-            LoadingIndicator(modifier = Modifier.fillMaxSize(),color = MaterialTheme.colorScheme.primaryContainer)
+
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                LoadingIndicator(
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.size(250.dp)
+                )
+            }
+
         }
 
         is LoadState.Error -> {

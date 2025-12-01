@@ -86,7 +86,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation("androidx.compose.runtime:runtime:1.6.7")
     implementation("androidx.compose.ui:ui-tooling")
-    implementation("androidx.compose.material3:material3:1.5.0-alpha08")
+    implementation("androidx.compose.material3:material3:1.5.0-alpha09")
 
     //Icon
     implementation("androidx.compose.material:material-icons-extended:1.7.7")
@@ -152,11 +152,10 @@ dependencies {
 
     // --- 2. Firebase Authentication ---
     // It's best to use the Firebase BoM (Bill of Materials) to manage versions
-    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
-
+    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
     // The actual Auth library
     implementation("com.google.firebase:firebase-auth")
-
+    implementation("com.google.firebase:firebase-analytics")
     // --- 3. Essential Helper (Highly Recommended) ---
     // Allows you to use ".await()" on Firebase tasks instead of callbacks
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")

@@ -4,11 +4,14 @@ package com.hitech.pickit.movie.presentation.cinemas_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -38,7 +41,16 @@ fun MoviesLazyRow(
             contentAlignment = Alignment.Center
         ) {
             //shimmer
-            LoadingIndicator(modifier = Modifier.fillMaxSize(),color = MaterialTheme.colorScheme.primaryContainer)
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                LoadingIndicator(
+                    color = MaterialTheme.colorScheme.primaryContainer,
+                    modifier = Modifier.size(250.dp)
+                )
+            }
         }
     } else {
 

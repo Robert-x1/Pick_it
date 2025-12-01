@@ -302,7 +302,16 @@ private fun ActorImage(
                 modifier = Modifier.fillMaxSize(),
 
                 loading = {
-                    LoadingIndicator(modifier = Modifier.fillMaxSize(),color = MaterialTheme.colorScheme.primaryContainer)
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ){
+                        LoadingIndicator(
+                            color = MaterialTheme.colorScheme.primaryContainer,
+                            modifier = Modifier.size(250.dp)
+                        )
+                    }
                 },
 
                 error = {

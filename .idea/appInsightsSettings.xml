@@ -9,10 +9,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.hitech.pickit" />
+                  <option name="mobileSdkAppId" value="1:701752497738:android:a0a0cdf56b3be98925b8b3" />
+                  <option name="projectId" value="pickit-f3ea8" />
+                  <option name="projectNumber" value="701752497738" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

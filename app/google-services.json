@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "701752497738",
+    "project_id": "pickit-f3ea8",
+    "storage_bucket": "pickit-f3ea8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701752497738:android:a0a0cdf56b3be98925b8b3",
+        "android_client_info": {
+          "package_name": "com.hitech.pickit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701752497738-12dn18s5onu5gaanspe8ske89nkurrs5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hitech.pickit",
+            "certificate_hash": "daf4a1d91a97bbe1db68bd0760daae7c0d762410"
+          }
+        },
+        {
+          "client_id": "701752497738-57leg22ugvn2qmrnr9aoqudmn304ncm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9PkcpxNaPBKK5L9j1Fk64ZPvmKgkHZm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701752497738-57leg22ugvn2qmrnr9aoqudmn304ncm2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

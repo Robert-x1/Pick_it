@@ -1,11 +1,29 @@
+@file:OptIn(ExperimentalMaterial3ExpressiveApi::class)
+
 package com.hitech.pickit.auth.presentation
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.LoadingIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,9 +67,13 @@ fun SignInScreen(
                 .background(
                     Brush.verticalGradient(
                         colors = listOf(
-                            Color.Black.copy(alpha = 0.3f),
-                            Color.Black.copy(alpha = 0.8f),
-                            Color.Black
+//                            Color.Black.copy(alpha = 0.3f),
+//                            Color.Black.copy(alpha = 0.8f),
+//                            Color.Black
+
+                            MaterialTheme.colorScheme.surface.copy(alpha = 0.3f),
+                            MaterialTheme.colorScheme.surface.copy(alpha = 0.8f),
+                            MaterialTheme.colorScheme.surface
                         )
                     )
                 )
@@ -70,7 +92,7 @@ fun SignInScreen(
             Image(
                 painter = painterResource(id = R.drawable.pickit_logo_big),
                 contentDescription = null,
-                modifier = Modifier.size(100.dp)
+                modifier = Modifier.size(150.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -89,7 +111,7 @@ fun SignInScreen(
             Text(
                 text = "Your personal movie guide.\nTrack, rate, and discover.",
                 style = MaterialTheme.typography.bodyLarge,
-                color = Color.LightGray,
+                color = MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.8f),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
@@ -110,10 +132,16 @@ fun SignInScreen(
                 enabled = !state.isLoading // Disable button while loading
             ) {
                 if (state.isLoading) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(24.dp),
-                        color = MaterialTheme.colorScheme.primary
-                    )
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        LoadingIndicator(
+                            color = MaterialTheme.colorScheme.primaryContainer,
+                            modifier = Modifier.size(250.dp)
+                        )
+                    }
                 } else {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Image(
@@ -140,9 +168,12 @@ fun SignInScreen(
                     .fillMaxWidth()
                     .height(56.dp),
                 shape = RoundedCornerShape(28.dp),
-                border = BorderStroke(1.dp, Color.White.copy(alpha = 0.5f)),
+                border = BorderStroke(
+                    1.dp,
+                    MaterialTheme.colorScheme.inverseSurface.copy(alpha = 0.5f)
+                ),
                 colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = Color.White
+                    contentColor = MaterialTheme.colorScheme.inverseSurface
                 )
             ) {
                 Text(
@@ -157,11 +188,21 @@ fun SignInScreen(
             // Footer / Legal Text
             val legalText = buildAnnotatedString {
                 append("By continuing, you agree to our ")
-                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)) {
+                withStyle(
+                    style = SpanStyle(
+                        color = MaterialTheme.colorScheme.primaryContainer,
+                        fontWeight = FontWeight.Bold
+                    )
+                ) {
                     append("Terms")
                 }
                 append(" & ")
-                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold)) {
+                withStyle(
+                    style = SpanStyle(
+                        color = MaterialTheme.colorScheme.primaryContainer,
+                        fontWeight = FontWeight.Bold
+                    )
+                ) {
                     append("Privacy Policy")
                 }
                 append(".")

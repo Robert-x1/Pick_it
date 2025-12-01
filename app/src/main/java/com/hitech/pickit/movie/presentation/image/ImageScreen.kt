@@ -3,13 +3,16 @@ package com.hitech.pickit.movie.presentation.image
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
@@ -40,6 +43,7 @@ import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.hitech.pickit.R
 import com.hitech.pickit.movie.data.mappers.toUserMessage
@@ -77,7 +81,16 @@ fun ImagesScreen(
     ) { padding ->
         Box(modifier = Modifier.padding(padding)) {
             when (state) {
-                is UiState.Loading -> LoadingIndicator(Modifier.fillMaxSize(),color = MaterialTheme.colorScheme.primaryContainer)
+                is UiState.Loading ->  Column(
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ){
+                    LoadingIndicator(
+                        color = MaterialTheme.colorScheme.primaryContainer,
+                        modifier = Modifier.size(250.dp)
+                    )
+                }
                 is UiState.Error -> ErrorScreen(
                     message = state.error.toUserMessage(),
                     modifier = Modifier.fillMaxSize(),

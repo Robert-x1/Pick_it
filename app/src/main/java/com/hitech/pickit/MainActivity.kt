@@ -3,72 +3,50 @@ package com.hitech.pickit
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen // تأكد من وجود المكتبة دي
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hitech.pickit.movie.presentation.profile.util.AppTheme
 import com.hitech.pickit.movie.presentation.profile.viewmodel.ProfileViewModel
+import com.hitech.pickit.ui.MainViewModel
 import com.hitech.pickit.ui.PickItApp
 import com.hitech.pickit.ui.theme.PickItTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    @OptIn(ExperimentalMaterial3ExpressiveApi::class)
+
+    private val mainViewModel: MainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            PickItTheme {
-                MyApp()
 
-//                MainOnboardingFlow(onFinish = {})
-
-//                Scaffold(
-//                    Modifier.fillMaxSize(),
-//                    containerColor = MaterialTheme.colorScheme.surface
-//                ) { innerPadding ->
-//                    Box(
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .padding(innerPadding), contentAlignment = Alignment.Center
-//                    ) {
-//
-//                    }
-//                }
-
-            }
+        splashScreen.setKeepOnScreenCondition {
+            mainViewModel.isLoading.value
         }
-    }
-}
 
-@Composable
-fun MyApp() {
-    val profileViewModel: ProfileViewModel = hiltViewModel()
-    val appTheme by profileViewModel.theme.collectAsStateWithLifecycle()
+        setContent {
+            val profileViewModel: ProfileViewModel = hiltViewModel()
+            val appTheme by profileViewModel.theme.collectAsStateWithLifecycle()
+            val isDark = appTheme == AppTheme.DARK
 
-    val isDark = appTheme == AppTheme.DARK
+            PickItTheme(darkTheme = isDark) {
 
-    var showSplash by remember { mutableStateOf(true) }
-    LaunchedEffect(Unit) {
-        delay(2000)
-        showSplash = false
-    }
-
-    PickItTheme(darkTheme = isDark) {
-        if (showSplash) {
-            // ممكن تحط هنا شاشة Splash مخصصة
-            // SplashScreen()
-        } else {
-            PickItApp()
+                val startDest by mainViewModel.startDestination.collectAsStateWithLifecycle()
+                val isLoading by mainViewModel.isLoading.collectAsStateWithLifecycle()
+                if (!isLoading) {
+                    PickItApp(
+                        startDestination = startDest,
+                        viewModel = mainViewModel
+                    )
+                }
+            }
         }
     }
 }

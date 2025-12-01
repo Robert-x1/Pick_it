@@ -43,6 +43,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
@@ -111,11 +112,10 @@ import com.hitech.pickit.movie.utili.MainDestinations.SIGNIN_ROUTE
 
 @Composable
 fun PickItApp(
-    viewModel: MainViewModel = hiltViewModel()
+    startDestination: String,
+    viewModel: MainViewModel = hiltViewModel(),
 ) {
     val appState = rememberPickItAppState()
-    val isLoading by viewModel.isLoading.collectAsState()
-    val startDestination by viewModel.startDestination.collectAsState()
     Scaffold(
         containerColor = MaterialTheme.colorScheme.surface,
         bottomBar = {
@@ -315,17 +315,16 @@ private fun NavGraphBuilder.movieDetailGraph(navController: NavHostController) {
         composable(
             route = "${MainDestinations.TMDB_MOVIE_DETAIL_ROUTE}/{${MainDestinations.TMDB_ID_KEY}}",
             arguments = listOf(navArgument(MainDestinations.TMDB_ID_KEY) { type = NavType.IntType })
-        ) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(graphRoute)
-            }
-            val viewModel: MovieDetailViewModel = hiltViewModel(parentEntry)
+        ) {
+
+            val viewModel: MovieDetailViewModel = hiltViewModel()
 
             MovieDetailScreen(
                 navController = navController,
                 viewModel = viewModel
             )
         }
+
 
         composable(
             route = "${MainDestinations.TMDB_IMAGES_ROUTE}/{index}",
@@ -369,7 +368,6 @@ private fun NavGraphBuilder.movieDetailGraph(navController: NavHostController) {
         }
     }
 }
-
 private fun NavGraphBuilder.tvShowDetailGraph(navController: NavHostController) {
     val graphRoute = "tv_show_details_graph"
 
@@ -380,11 +378,8 @@ private fun NavGraphBuilder.tvShowDetailGraph(navController: NavHostController) 
         composable(
             route = "${MainDestinations.TMDB_TV_SHOW_DETAIL_ROUTE}/{${MainDestinations.TMDB_ID_KEY}}",
             arguments = listOf(navArgument(MainDestinations.TMDB_ID_KEY) { type = NavType.IntType })
-        ) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(graphRoute)
-            }
-            val viewModel: TVShowDetailViewModel = hiltViewModel(parentEntry)
+        ) {
+            val viewModel: TVShowDetailViewModel = hiltViewModel()
 
             TVShowDetailScreen(
                 navController = navController,
@@ -524,7 +519,7 @@ private fun NavGraphBuilder.onboardingScreen(
             onFinish = {
                 viewModel.saveOnBoardingState(completed = true)
 
-                navController.navigate(HOME_ROUTE) {
+                navController.navigate(SIGNIN_ROUTE) {
                     popUpTo(ONBOARDING_ROUTE) { inclusive = true }
                 }
             }
