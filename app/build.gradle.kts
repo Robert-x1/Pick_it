@@ -7,7 +7,7 @@ plugins {
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
-
+    id("com.google.gms.google-services")
 }
 
 
@@ -75,6 +75,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.play.services.auth)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -140,4 +141,26 @@ dependencies {
 
     implementation("androidx.appcompat:appcompat:1.7.1")
     implementation("androidx.appcompat:appcompat-resources:1.7.1")
+
+    // --- 1. The Modern Google Sign-In (Credential Manager) ---
+    // The core library for the new sign-in flow
+    implementation("androidx.credentials:credentials:1.3.0")
+    // support for Google Sign-In specifically
+    implementation("androidx.credentials:credentials-play-services-auth:1.3.0")
+    // Google ID library to parse the result (get the token)
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
+
+    // --- 2. Firebase Authentication ---
+    // It's best to use the Firebase BoM (Bill of Materials) to manage versions
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+
+    // The actual Auth library
+    implementation("com.google.firebase:firebase-auth")
+
+    // --- 3. Essential Helper (Highly Recommended) ---
+    // Allows you to use ".await()" on Firebase tasks instead of callbacks
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+
+    // fireStore
+    implementation("com.google.firebase:firebase-firestore")
 }

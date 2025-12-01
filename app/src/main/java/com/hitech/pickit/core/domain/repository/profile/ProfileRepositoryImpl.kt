@@ -13,8 +13,10 @@ import javax.inject.Inject
 class ProfileRepositoryImpl @Inject constructor(
     private val localDataSource: LocalDataSource
 ): ProfileRepository {
+
     override val appTheme: Flow<AppTheme>
         get() = localDataSource.themeMode
+
     override suspend fun saveThemePreference(theme: AppTheme) {
         localDataSource.saveThemePreference(theme)
     }

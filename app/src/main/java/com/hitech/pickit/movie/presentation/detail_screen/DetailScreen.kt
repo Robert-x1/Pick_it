@@ -1,5 +1,6 @@
 package com.hitech.pickit.movie.presentation.detail_screen
 
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.AnimatedVisibility
@@ -222,6 +223,21 @@ fun <T : TMDbItemDetails, E : TMDbItem> DetailScreen(
     fab: @Composable (MutableState<Boolean>, Boolean, TMDbItemDetails) -> Unit,
 ) {
     val isFabVisible = rememberSaveable { mutableStateOf(true) }
+
+    val context = LocalContext.current
+    LaunchedEffect(key1 = true) {
+        viewModel.uiEvent.collect { event ->
+            when (event) {
+                is UiEvent.ShowToastMessage -> {
+                    Toast.makeText(
+                        context,
+                        context.getString(event.messageResId),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
     val defaultTextColor = MaterialTheme.colorScheme.onSurface
     val vibrantColor = remember { Animatable(defaultTextColor) }
 

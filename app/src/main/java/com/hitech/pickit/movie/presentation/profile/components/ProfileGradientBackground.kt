@@ -11,27 +11,39 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.hitech.pickit.R
 import com.hitech.pickit.ui.theme.PickItTheme
 
 @Composable
-fun ProfileScreenGradient(modifier: Modifier = Modifier) {
+fun ProfileScreenGradient(
+    modifier: Modifier = Modifier,
+    imageUrl: String?
+) {
+    val context = LocalContext.current
+
     Box(
         modifier = modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.surface),
         contentAlignment = Alignment.Center
     ) {
-        Image(
-            modifier = Modifier
-                .fillMaxSize(),
-            painter = painterResource(R.drawable.joker),
-            contentDescription = "",
+        AsyncImage(
+            model = ImageRequest.Builder(context)
+                .data(imageUrl ?: R.drawable.default_user_img)
+                .crossfade(true)
+                .build(),
+            contentDescription = null,
             contentScale = ContentScale.Crop,
-            alignment = Alignment.TopCenter
+            alignment = Alignment.TopCenter,
+            modifier = Modifier.fillMaxSize()
+
         )
+
         Box(
             modifier = Modifier
                 .matchParentSize()
@@ -53,6 +65,8 @@ fun ProfileScreenGradient(modifier: Modifier = Modifier) {
 @Composable
 private fun ProfileScreenGradientPreview() {
     PickItTheme {
-        ProfileScreenGradient()
+        ProfileScreenGradient(
+            imageUrl = null
+        )
     }
 }

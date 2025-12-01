@@ -5,12 +5,12 @@ import com.hitech.pickit.core.domain.repository.BaseFeedRepository
 import com.hitech.pickit.core.domain.repository.BookmarkDetailsRepository
 import com.hitech.pickit.core.domain.repository.PersonRepository
 import com.hitech.pickit.core.domain.repository.movie.MovieFeedRepository
-import com.hitech.pickit.core.domain.repository.movie.detail.BookmarkMovieDetailsRepositoryImpl
+import com.hitech.pickit.core.domain.repository.movie.detail.FirestoreBookmarkMovieDetailsRepositoryImpl
 import com.hitech.pickit.core.domain.repository.movie.detail.MovieDetailRepository
 import com.hitech.pickit.core.domain.repository.profile.ProfileRepository
 import com.hitech.pickit.core.domain.repository.profile.ProfileRepositoryImpl
 import com.hitech.pickit.core.domain.repository.tvshow.TVShowFeedRepository
-import com.hitech.pickit.core.domain.repository.tvshow.detail.BookmarkTVShowDetailsRepositoryImpl
+import com.hitech.pickit.core.domain.repository.tvshow.detail.FirestoreBookmarkTVShowDetailsRepositoryImpl
 import com.hitech.pickit.core.domain.repository.tvshow.detail.TVShowDetailRepository
 import com.hitech.pickit.movie.domain.model.Movie
 import com.hitech.pickit.movie.domain.model.MovieDetails
@@ -31,13 +31,13 @@ abstract class RepositoryBindsModule {
     @Binds
     @Singleton
     abstract fun bindMovieBookmarkRepository(
-        impl: BookmarkMovieDetailsRepositoryImpl
+        impl: FirestoreBookmarkMovieDetailsRepositoryImpl
     ): BookmarkDetailsRepository<Movie>
 
     @Binds
     @Singleton
     abstract fun bindTVShowBookmarkRepository(
-        impl: BookmarkTVShowDetailsRepositoryImpl
+        impl: FirestoreBookmarkTVShowDetailsRepositoryImpl
     ): BookmarkDetailsRepository<TVShow>
 
     @Binds
@@ -76,5 +76,4 @@ abstract class RepositoryBindsModule {
     abstract fun bindProfileRepository(
         impl: ProfileRepositoryImpl
     ): ProfileRepository
-
 }

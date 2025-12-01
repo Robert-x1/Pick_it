@@ -11,4 +11,6 @@ interface BookmarkDetailsRepository<T : TMDbItem> {
     suspend fun isBookmarked(id: Int): Boolean
 
     suspend fun getBookmarks(): List<T>
+
+    fun isUserLoggedIn(): Boolean
 }

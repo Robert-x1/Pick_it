@@ -26,11 +26,17 @@ class MainViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             repository.readOnBoardingState().collect { completed ->
-                if (completed) {
-                    _startDestination.value = MainDestinations.HOME_ROUTE
-                } else {
-                    _startDestination.value = ONBOARDING_ROUTE
+
+                // check login
+                val currentUser = com.google.firebase.auth.FirebaseAuth.getInstance().currentUser
+                val isLoggedIn = currentUser != null
+
+                _startDestination.value = when {
+                    !completed -> ONBOARDING_ROUTE // first install -> onBoarding
+                    isLoggedIn -> MainDestinations.HOME_ROUTE // Logged in? -> go home
+                    else -> MainDestinations.SIGNIN_ROUTE     // Not logged in? -> Go to Sign In (being a guest counts as not logged in)
                 }
+
                 _isLoading.value = false
             }
         }
