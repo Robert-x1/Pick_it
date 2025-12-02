@@ -129,7 +129,7 @@ fun <T : TMDbItem> Search(
                 Spacer(Modifier.height(20.dp))
 
                 DeclarativeItems(
-                    title = R.string.genres, // تأكد إن الـ String ده موجود
+                    title = R.string.genres,
                     tags = SearchData.genres,
                     onTagClick = { tag ->
                         query = tag

@@ -57,7 +57,7 @@ fun DestinationBar(
                 }
             },
             colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                containerColor = MaterialTheme.colorScheme.background.copy(alpha = 0.65f),
+                containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.65f),
                 navigationIconContentColor = MaterialTheme.colorScheme.onSurface,
                 titleContentColor = MaterialTheme.colorScheme.onSurface,
                 actionIconContentColor = MaterialTheme.colorScheme.onSurface
