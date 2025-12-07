@@ -24,9 +24,9 @@ Built with **Kotlin** and **Jetpack Compose**, it leverages the power of **The M
 
 ## 📸 Screenshots
 
-| Home Feed | Movie Details | Smart Search | Favorites |
+| Home Feed | Movie Details | Favorites | Profile |
 |:---------:|:-------------:|:------------:|:---------:|
-| <img src="screenshots/home.png" width="200"/> | <img src="screenshots/detail.png" width="200"/> | <img src="screenshots/search.png" width="200"/> | <img src="screenshots/favorites.png" width="200"/> |
+| <img src="https://i.postimg.cc/Zqm8gjZC/Screenshot-2025-12-02-15-04-29-96-10768d4acf76279a75a33c237ab36c7f.jpg" width="200"/> | <img src="https://i.postimg.cc/k41W2mSR/Screenshot-2025-12-02-15-05-49-92-10768d4acf76279a75a33c237ab36c7f.jpg" width="200"/> | <img src="https://i.postimg.cc/q7rsYQ0y/Screenshot_2025_12_02_15_04_59_17_10768d4acf76279a75a33c237ab36c7f.jpg" width="200"/> | <img src="https://i.postimg.cc/Fz6bB4FM/Screenshot-2025-12-02-15-03-36-51-10768d4acf76279a75a33c237ab36c7f.jpg" width="200"/> |
 ## 🛠️ Tech Stack & Libraries
 
 * **Language:** [Kotlin](https://kotlinlang.org/) (100%)
