@@ -13,10 +13,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.hitech.pickit.movie.presentation.profile.util.AppTheme
-import com.hitech.pickit.movie.presentation.profile.viewmodel.ProfileViewModel
-import com.hitech.pickit.ui.PickItApp
-import com.hitech.pickit.ui.theme.PickItTheme
+import com.hitech.pickit.profile.presentation.util.AppTheme
+import com.hitech.pickit.profile.presentation.viewmodel.ProfileViewModel
+import com.hitech.pickit.navigation.PickItApp
+import com.hitech.pickit.core.presentation.theme.PickItTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 
