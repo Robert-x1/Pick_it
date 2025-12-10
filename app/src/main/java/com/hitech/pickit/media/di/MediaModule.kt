@@ -1,4 +1,4 @@
-package com.hitech.pickit.core.di
+package com.hitech.pickit.media.di
 
 import com.hitech.pickit.media.domain.repository.BaseDetailRepository
 import com.hitech.pickit.media.domain.repository.BaseFeedRepository
@@ -26,7 +26,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class RepositoryBindsModule {
+abstract class MediaModule {
 
     @Binds
     @Singleton
